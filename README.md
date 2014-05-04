@@ -1,12 +1,8 @@
-# TouchVG
+# TouchVGTest
 
-TouchVG is a lightweight 2D vector drawing framework mainly using C++ for iOS, Android and Windows.
-
-Features described in [Online document](http://touchvg.github.io).
+Unit test project for [TouchVG](https://github.com/touchvg/TouchVG), which is a lightweight 2D vector drawing framework mainly using C++ for iOS, Android and Windows.
 
 ![arch](http://touchvg.github.io/images/arch.svg)
-
-![iphone1](/doc/images/iphone1.png) | ![android1](/doc/images/android1.png) | ![iphone2](/doc/images/iphone2.png)
 
 ## License
 
@@ -20,26 +16,6 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
 - [x3py](https://github.com/rhcad/x3py) (Apache): Compile script files.
 - [SWIG](https://github.com/swig/swig) (GPL): Use the tool to generate the glue code for Java and C#.
 - [iOS-Universal-Library-Template](https://github.com/michaeltyson/iOS-Universal-Library-Template): Use it to create static library project.
-- Algorithms: [NearestPoint.c](http://tog.acm.org/resources/GraphicsGems/gems/NearestPoint.c), 
-[Bezier's bound box](http://processingjs.nihongoresources.com/bezierinfo/#bounds), 
-[The intersection of two circles](http://blog.csdn.net/cyg0810/article/details/7765894), 
-[Position judgment](http://orion.math.iastate.edu/burkardt/c_src/orourke/tri.c)
- and [Fitting digitized curves](https://github.com/erich666/GraphicsGems/blob/master/gems/FitCurves.c).
-
-## How to Contribute
-
-Contributors and sponsors are welcome. You may translate, commit issues or pull requests on this Github site.
-To contribute, please follow the branching model outlined here: [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/).
-
-Welcome to the Chinese QQ group `192093613` to discuss and share.
-
-## Contributors
-
-- [Zhang Yungui](https://github.com/rhcad)
-- [Archer](https://github.com/a7ch3r)
-- [ljlin](https://github.com/ljlin)
-- [Pengjun](https://github.com/pengjun) / Line and triangle commands
-- [Proteas](https://github.com/proteas)
 
 # How to Compile
 
@@ -107,4 +83,4 @@ Welcome to the Chinese QQ group `192093613` to discuss and share.
   -  Enter `thirdparty` directory then type `python newproj.py YourCmds`.
   - Need to install python to run the script.
  
-- You can customize the drawing behavior via implement your [CmdObserve class](thirdparty/DemoCmds/core/cmds/cmds.cpp).
+- You can customize the drawing behavior via implement your CmdObserver class.

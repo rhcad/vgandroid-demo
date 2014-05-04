@@ -148,12 +148,16 @@
       <Project>{F0736804-0A5D-4A92-8A27-657D619187CD}</Project>
       <Name>democmdslib_cs10</Name>
     </ProjectReference>
-    <ProjectReference Include="..\touchvglib\touchvglib_cs10.csproj">
+    <ProjectReference Include="..\..\thirdparty\TouchVG\wpf\touchvglib\touchvglib_cs10.csproj">
       <Project>{AD99A603-DE1E-461B-975B-464BCEFBE035}</Project>
       <Name>touchvglib_cs10</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>@xcopy $(ProjectDir)..\..\thirdparty\TouchVG\wpf\build\$(ConfigurationName)10\touchvg.dll $(TargetDir) /Y
+@xcopy $(ProjectDir)..\..\thirdparty\DemoCmds\win\build\$(ConfigurationName)10\democmds.dll $(TargetDir) /Y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

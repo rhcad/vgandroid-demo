@@ -392,7 +392,7 @@
 				HEADER_SEARCH_PATHS = (
 					"../../../thirdparty/TouchVGCore/core/include/**",
 					"../../../thirdparty/DemoCmds/core/**",
-					../../view/include,
+					../../../thirdparty/TouchVG/ios/include,
 				);
 				INFOPLIST_FILE = ../Classes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
@@ -431,7 +431,7 @@
 				HEADER_SEARCH_PATHS = (
 					"../../../thirdparty/TouchVGCore/core/include/**",
 					"../../../thirdparty/DemoCmds/core/**",
-					../../view/include,
+					../../../thirdparty/TouchVG/ios/include,
 				);
 				INFOPLIST_FILE = ../Classes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;

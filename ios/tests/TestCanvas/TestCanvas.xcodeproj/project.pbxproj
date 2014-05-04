@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0279021F1916991B0095F836 /* GiCanvasAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0279021E1916991B0095F836 /* GiCanvasAdapter.mm */; };
 		AE2B80311804026200E50A6E /* TouchVG.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE2B80301804026200E50A6E /* TouchVG.bundle */; };
 		AE3341B516ECBDBE00F0E517 /* CalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3341B416ECBDBE00F0E517 /* CalloutView.m */; };
 		AE4E6F0516129337006CAA5C /* GraphView3.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE4E6F0316129337006CAA5C /* GraphView3.mm */; };
@@ -24,11 +25,12 @@
 		AEF2D56F1609B67200DDB7F2 /* app57.png in Resources */ = {isa = PBXBuildFile; fileRef = AEF2D56D1609B67200DDB7F2 /* app57.png */; };
 		AEF2D5701609B67200DDB7F2 /* app72.png in Resources */ = {isa = PBXBuildFile; fileRef = AEF2D56E1609B67200DDB7F2 /* app72.png */; };
 		AEF2D5B01609BF7D00DDB7F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF2D5AD1609BF7D00DDB7F2 /* main.m */; };
-		C9FA89C317ED410E00B73E16 /* GiCanvasAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9FA89C217ED410E00B73E16 /* GiCanvasAdapter.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0209DF371891D9BA00C6CBF4 /* ARCMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARCMacro.h; path = ../../view/include/ARCMacro.h; sourceTree = "<group>"; };
+		0279021D1916990A0095F836 /* GiCanvasAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiCanvasAdapter.h; path = ../../../thirdparty/TouchVG/ios/include/GiCanvasAdapter.h; sourceTree = "<group>"; };
+		0279021E1916991B0095F836 /* GiCanvasAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GiCanvasAdapter.mm; path = ../../../thirdparty/TouchVG/ios/src/GiCanvasAdapter.mm; sourceTree = "<group>"; };
+		02790220191699550095F836 /* ARCMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARCMacro.h; path = ../../../thirdparty/TouchVG/ios/include/ARCMacro.h; sourceTree = "<group>"; };
 		AE2B80301804026200E50A6E /* TouchVG.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TouchVG.bundle; path = ../Resources/TouchVG.bundle; sourceTree = "<group>"; };
 		AE2F18EB18429B7D000981AD /* TestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestView.h; sourceTree = "<group>"; };
 		AE3341B316ECBDBE00F0E517 /* CalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutView.h; sourceTree = "<group>"; };
@@ -59,8 +61,6 @@
 		AEF2D5AD1609BF7D00DDB7F2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AEF2D5AE1609BF7D00DDB7F2 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		AEF2D5B81609C1A900DDB7F2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9FA89C117ED410500B73E16 /* GiCanvasAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiCanvasAdapter.h; path = ../../view/include/GiCanvasAdapter.h; sourceTree = "<group>"; };
-		C9FA89C217ED410E00B73E16 /* GiCanvasAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GiCanvasAdapter.mm; path = ../../view/src/GiCanvasAdapter.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +81,11 @@
 		AE0762F3160AABE000518207 /* canvas */ = {
 			isa = PBXGroup;
 			children = (
+				0279021E1916991B0095F836 /* GiCanvasAdapter.mm */,
+				0279021D1916990A0095F836 /* GiCanvasAdapter.h */,
 				AE97A1A7186D52AD00DFEA77 /* testcanvas.cpp */,
 				AE97A1A6186D529F00DFEA77 /* testcanvas.h */,
 				AE97A1A5186D529200DFEA77 /* gicanvas.h */,
-				C9FA89C217ED410E00B73E16 /* GiCanvasAdapter.mm */,
-				C9FA89C117ED410500B73E16 /* GiCanvasAdapter.h */,
 			);
 			name = canvas;
 			sourceTree = "<group>";
@@ -138,7 +138,7 @@
 		AEF2D530160964BA00DDB7F2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0209DF371891D9BA00C6CBF4 /* ARCMacro.h */,
+				02790220191699550095F836 /* ARCMacro.h */,
 				AE3341B316ECBDBE00F0E517 /* CalloutView.h */,
 				AE3341B416ECBDBE00F0E517 /* CalloutView.m */,
 				AEF2D539160964BA00DDB7F2 /* AppDelegate.h */,
@@ -240,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEF2D53B160964BA00DDB7F2 /* AppDelegate.m in Sources */,
+				0279021F1916991B0095F836 /* GiCanvasAdapter.mm in Sources */,
 				AEF2D53E160964BA00DDB7F2 /* MasterViewController.mm in Sources */,
 				AEF2D541160964BA00DDB7F2 /* DetailViewController.mm in Sources */,
 				AE97A1A8186D52AD00DFEA77 /* testcanvas.cpp in Sources */,
@@ -249,7 +250,6 @@
 				AEADC21F16EB570800484962 /* LargeView3.mm in Sources */,
 				AE3341B516ECBDBE00F0E517 /* CalloutView.m in Sources */,
 				AE815F331718EA71006BC607 /* BasicAnimationView.m in Sources */,
-				C9FA89C317ED410E00B73E16 /* GiCanvasAdapter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

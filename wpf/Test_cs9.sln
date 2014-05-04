@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfDemo_cs9", "WpfDemo\WpfD
 		{C81D9406-B164-469D-83F1-AFE50842F31E} = {C81D9406-B164-469D-83F1-AFE50842F31E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "touchvglib_cs9", "touchvglib\touchvglib_cs9.csproj", "{AD99A603-DE1E-461B-975B-464BCEFBE035}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "touchvglib_cs9", "..\thirdparty\TouchVG\wpf\touchvglib\touchvglib_cs9.csproj", "{AD99A603-DE1E-461B-975B-464BCEFBE035}"
 	ProjectSection(ProjectDependencies) = postProject
 		{180CC455-E62C-4AB8-A024-F3FF724719EA} = {180CC455-E62C-4AB8-A024-F3FF724719EA}
 	EndProjectSection
@@ -15,7 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "democmds", "..\thirdparty\D
 		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF} = {8D0C50E7-E089-404D-8331-F4F62FCA1FFF}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "touchvg", "touchvg\touchvg_vc9.vcproj", "{180CC455-E62C-4AB8-A024-F3FF724719EA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "touchvg", "..\thirdparty\TouchVG\wpf\touchvg\touchvg_vc9.vcproj", "{180CC455-E62C-4AB8-A024-F3FF724719EA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF} = {8D0C50E7-E089-404D-8331-F4F62FCA1FFF}
 	EndProjectSection
@@ -102,11 +102,13 @@ Global
 		{C81D9406-B164-469D-83F1-AFE50842F31E}.Release|Win32.ActiveCfg = Release|Any CPU
 		{C81D9406-B164-469D-83F1-AFE50842F31E}.Release|Win32.Build.0 = Release|Any CPU
 		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF}.Debug|Any CPU.Build.0 = Debug|Win32
 		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
 		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF}.Debug|Mixed Platforms.Build.0 = Debug|Win32
 		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF}.Debug|Win32.ActiveCfg = Debug|Win32
 		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF}.Debug|Win32.Build.0 = Debug|Win32
 		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF}.Release|Any CPU.ActiveCfg = Release|Win32
+		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF}.Release|Any CPU.Build.0 = Release|Win32
 		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF}.Release|Mixed Platforms.ActiveCfg = Release|Win32
 		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{8D0C50E7-E089-404D-8331-F4F62FCA1FFF}.Release|Win32.ActiveCfg = Release|Win32
