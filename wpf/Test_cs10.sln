@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "democmds", "democmds", "{3B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "touchvg", "touchvg", "{A9B0FFEA-2B25-401B-866C-80CA6039EF25}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TouchVGCore", "..\thirdparty\TouchVGCore\win\msvc\TouchVGCore\TouchVGCore_vc10.vcxproj", "{A7119A43-A135-413A-A852-F2945924AC17}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TouchVGCore", "..\thirdparty\TouchVGCore\win\TouchVGCore\TouchVGCore_vc10.vcxproj", "{A7119A43-A135-413A-A852-F2945924AC17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

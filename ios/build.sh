@@ -8,6 +8,7 @@ iphoneos70=`xcodebuild -showsdks | grep -i iphoneos7.0`
 iphoneos61=`xcodebuild -showsdks | grep -i iphoneos6.1`
 iphoneos51=`xcodebuild -showsdks | grep -i iphoneos5.1`
 iphoneos43=`xcodebuild -showsdks | grep -i iphoneos4.3`
+
 iosvgpath=../thirdparty/TouchVG/ios/TouchVG
 corepath=../thirdparty/TouchVGCore/ios/TouchVGCore
 demopath=../thirdparty/DemoCmds/ios/DemoCmds
@@ -35,6 +36,7 @@ if [ -n "$iphoneos51" ]; then
     xcodebuild -project $iosvgpath/TouchVG.xcodeproj $1 $2 -sdk iphoneos5.1 -configuration Release
     xcodebuild -project $demopath/DemoCmds.xcodeproj $1 $2 -sdk iphoneos5.1 -configuration Release
     xcodebuild -project $corepath/TouchVGCore.xcodeproj $1 $2 -sdk iphoneos5.1 -configuration Release
+    xcodebuild -project $SVG_path/SVGKit-iOS.xcodeproj $1 $2 -sdk iphoneos5.1 -configuration Release
 else
 if [ -n "$iphoneos43" ]; then
     xcodebuild -project $iosvgpath/TouchVG.xcodeproj $1 $2 -sdk iphoneos4.3 -configuration Release

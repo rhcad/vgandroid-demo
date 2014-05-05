@@ -33,7 +33,7 @@ xcopy ..\..\thirdparty\TouchVG\win32\src\view\*.* %destpath%\winview_src\ /Y
 xcopy ..\..\thirdparty\TouchVG\ios\include\*.* %destpath%\iosview\ /Y
 xcopy ..\..\thirdparty\TouchVG\ios\src\*.* %destpath%\iosview_src\ /Y
 
-xcopy ..\..\thirdparty\TouchVG\android\core\src\rhcad\touchvg\*.java %destpath%\andrview\ /Y
-xcopy ..\..\thirdparty\TouchVG\android\core\src\rhcad\touchvg\view\*.* %destpath%\andrview\ /Y/S
+xcopy ..\..\thirdparty\TouchVG\android\TouchVG\src\rhcad\touchvg\*.java %destpath%\andrview\ /Y
+xcopy ..\..\thirdparty\TouchVG\android\TouchVG\src\rhcad\touchvg\view\*.* %destpath%\andrview\ /Y/S
 
 xcopy ..\..\thirdparty\TouchVG\wpf\touchvglib\view\*.cs %destpath%\wpfview\ /Y

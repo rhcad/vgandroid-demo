@@ -12,7 +12,7 @@ Creator:    Zhang Yungui <rhcad@hotmail.com>
 Date:       2014.5.4
 """
 
-import os, sys, re, uuid
+import os, sys, shutil, re, uuid
 
 def multi_replace(text, adict):
     rx = re.compile('|'.join(map(re.escape, adict)))
@@ -21,7 +21,8 @@ def multi_replace(text, adict):
     return rx.sub(xlat, text)
 
 def copyfiles(srcdir, dstdir, pairs, callback):
-    if srcdir.endswith(".git") or not os.path.exists(srcdir): return
+    if srcdir.endswith(".git") or not os.path.exists(srcdir):
+        return
     
     for fn in os.listdir(srcdir):
         srcfile = os.path.join(srcdir, fn)
@@ -32,15 +33,15 @@ def copyfiles(srcdir, dstdir, pairs, callback):
             continue
         
         if not os.path.exists(dstfile) and callback(fn, pairs):
-            if not os.path.exists(dstdir): os.makedirs(dstdir)
-            open(dstfile, "wb").write(open(srcfile, "rb").read())
+            if not os.path.exists(dstdir):
+                os.makedirs(dstdir)
             isutf8 = False
             
             try:
-                text = open(dstfile).read()
+                text = open(srcfile).read()
             except UnicodeDecodeError:
                 try:
-                    text = open(dstfile,'r',-1,'utf-8').read()
+                    text = open(srcfile,'r',-1,'utf-8').read()
                     isutf8 = True
                 except UnicodeDecodeError:
                     print("* Fail to read '%s' as utf-8 encoding." % (dstfile,))
@@ -59,13 +60,15 @@ def copyfiles(srcdir, dstdir, pairs, callback):
                     open(dstfile, 'w',-1,'utf-8').write(newtext)
                     print('[replaced] %s [utf-8]' % (dstfile,))
             else:
+                shutil.copy(srcfile, dstfile)
                 print('[created] %s' % (dstfile,))
 
 def makeproj(prjname):
-    srcdir   = os.path.abspath('DemoCmds')
-    dstdir   = os.path.abspath(prjname)
+    srcname = 'DemoCmds'
+    srcdir  = os.path.abspath(srcname)
+    dstdir  = os.path.abspath(prjname)
     
-    if prjname == '':
+    if prjname == '' or prjname == srcname:
         print("Need input the project name.")
         return
     if not os.path.exists(srcdir):
@@ -73,7 +76,7 @@ def makeproj(prjname):
               "\n\'%s\' does not exist." % (srcdir,))
         return
 
-    pairs = {'DemoCmds':prjname, 'democmds':prjname.lower(), 'DEMOCMDS':prjname.upper() }
+    pairs = {srcname:prjname, srcname.lower():prjname.lower(), srcname.upper():prjname.upper() }
     
     def matchfile(filename, pairs):
         return True

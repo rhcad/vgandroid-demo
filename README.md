@@ -1,6 +1,6 @@
 # TouchVGTest
 
-Unit test project for [TouchVG](https://github.com/touchvg/TouchVG), which is a lightweight 2D vector drawing framework mainly using C++ for iOS, Android and Windows.
+This is a unit test project for [TouchVG](https://github.com/touchvg/TouchVG), which is a lightweight 2D vector drawing framework for iOS, Android and Windows.
 
 ![arch](http://touchvg.github.io/images/arch.svg)
 
@@ -8,25 +8,21 @@ Unit test project for [TouchVG](https://github.com/touchvg/TouchVG), which is a 
 
 This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the following open source projects:
 
+- [TouchVG](https://github.com/touchvg/TouchVG) (LGPL): Vector drawing framework for iOS, Android and Windows.
 - [TouchVGCore](https://github.com/touchvg/TouchVGCore) (LGPL): Cross-platform vector drawing libraries using C++.
-- [svg-android](https://github.com/japgolly/svg-android) (Apache): Vector graphics support for Android.
 - [SVGKit](https://github.com/SVGKit/SVGKit) (MIT): Display and interact with SVG Images with CoreAnimation on iOS.
-- [simple-svg](http://code.google.com/p/simple-svg) (BSD): A C++ header file for creating SVG files.
-- [rapidjson](https://github.com/Kanma/rapidjson) (MIT): A fast JSON parser/generator for C++ with both SAX/DOM style API.
-- [x3py](https://github.com/rhcad/x3py) (Apache): Compile script files.
-- [SWIG](https://github.com/swig/swig) (GPL): Use the tool to generate the glue code for Java and C#.
-- [iOS-Universal-Library-Template](https://github.com/michaeltyson/iOS-Universal-Library-Template): Use it to create static library project.
+- [DemoCmds](https://github.com/touchvg/DemoCmds): A template and example project containing customized shape and command classes.
 
 # How to Compile
 
 ## Compile for Android
 
-- Import all projects under `./android` directory of TouchVG in eclipse, then run `VGTest` or `vgdemo1` project to view the demonstration.
+- Import all projects of this project in eclipse, then run `VGTest` or `vgdemo1` project to view the demonstration.
 
   - Android SDK version of the projects may need to modify according to your installation.
   - Recommend using the newer [ADT Bundle](http://developer.android.com/sdk/index.html) to avoid complex configuration.
 
--  To regenerate libtouchvg.so, please enter `android` directory of TouchVG, then type `./build.sh`
+-  To regenerate libtouchvg.so and libdemocmds.so, please enter `android` directory of this project, then type `./build.sh`
 (Need to add the [NDK](http://developer.android.com/tools/sdk/ndk/index.html) installation location to your PATH environment variable).
 
    - If the error `build/gmsl/__gmsl:512: *** non-numeric second argument to wordlist function` occurs, then open the `build/gmsl/__gmsl` file in the NDK installation directory, and change line 512 to:
@@ -36,8 +32,6 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
 
    - To regenerate the kernel JNI classes, type `./build.sh-swig`
 (Need to install [SWIG](http://sourceforge.net/projects/swig/files/), and add the location to PATH).
-
-- Do not want to write C++ code? Please reference to `android/test/src/vgtest/testview/shape` package to write your own shapes and commands. You can use `thirdparty/newproj.py` to create your library project containing your own shapes and commands.
 
 ## Compile for iOS
 
@@ -79,8 +73,12 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
  
 # Add more shapes and commands
 
-- You can use newproj.py to create your library project (Recommended as GIT submodule) containing your own shapes and commands. So the TouchVG library does not require changes.
-  -  Enter `thirdparty` directory then type `python newproj.py YourCmds`.
+- Do not want to write C++ code? Please reference to [android/test/src/vgtest/testview/shape](android/test/src/vgtest/testview/shape) package to write your own shapes and commands.
+
+- You can use [thirdparty/newproj.py](thirdparty/newproj.py) to create library project (Recommended as GIT submodule) containing your own shapes and commands. So the TouchVG and TouchVGCore libraries does not require changes.
+
+  - Enter `thirdparty` directory and type `python newproj.py YourCmds`.
+    
   - Need to install python to run the script.
  
-- You can customize the drawing behavior via implement your CmdObserver class.
+- You can customize the drawing behavior via implement your CmdObserver class (see the example in [DemoCmds](https://github.com/touchvg/DemoCmds) ).

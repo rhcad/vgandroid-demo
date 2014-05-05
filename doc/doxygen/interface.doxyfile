@@ -591,10 +591,10 @@ WARN_LOGFILE           =
 # with spaces.
 
 INPUT                  = ../../thirdparty/TouchVGCore/core/include \
-                         ../../win32/include \
-                         ../../ios/view/include \
-                         ../../android/core/src/rhcad/touchvg/view \
-                         ../../wpf/touchvglib/view \
+                         ../../thirdparty/TouchVG/win32/include \
+                         ../../thirdparty/TouchVG/ios/include \
+                         ../../thirdparty/TouchVG/android/TouchVG/src/rhcad/touchvg/view \
+                         ../../thirdparty/TouchVG/wpf/touchvglib/view \
                          MainPage.txt
 
 # This tag can be used to specify the character encoding of the source files 
@@ -626,13 +626,13 @@ RECURSIVE              = YES
 # excluded from the INPUT source files. This way you can easily exclude a 
 # subdirectory from a directory tree whose root is specified with the INPUT tag.
 
-EXCLUDE                = ../../android/core/src/rhcad/touchvg/view/internal \
+EXCLUDE                = ../../thirdparty/TouchVG/android/TouchVG/src/rhcad/touchvg/view/internal \
                          ../../thirdparty/TouchVGCore/core/include/record \
                          ../../thirdparty/TouchVGCore/core/include/test \
                          ../../thirdparty/TouchVGCore/core/include/mglog.h \
-                         ../../android/core/src/rhcad/touchvg/package-info.java \
-                         ../../android/core/src/rhcad/touchvg/view/package-info.java \
-                         ../../ios/view/include/ARCMacro.h
+                         ../../thirdparty/TouchVG/android/TouchVG/src/rhcad/touchvg/package-info.java \
+                         ../../thirdparty/TouchVG/android/TouchVG/src/rhcad/touchvg/view/package-info.java \
+                         ../../thirdparty/TouchVG/ios/include/ARCMacro.h
 
 # The EXCLUDE_SYMLINKS tag can be used select whether or not files or 
 # directories that are symbolic links (a Unix filesystem feature) are excluded 
