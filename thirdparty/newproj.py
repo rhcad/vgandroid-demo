@@ -21,7 +21,7 @@ def multi_replace(text, adict):
     return rx.sub(xlat, text)
 
 def copyfiles(srcdir, dstdir, pairs, callback):
-    if srcdir.endswith(".git") or not os.path.exists(srcdir):
+    if srcdir.endswith(".git") or srcdir.endswith(".DS_Store") or not os.path.exists(srcdir):
         return
     
     for fn in os.listdir(srcdir):
@@ -85,11 +85,11 @@ def makeproj(prjname):
 if __name__=="__main__":
     def inputparam(index, prompt, default=''):
         if len(sys.argv) > index: ret = sys.argv[index]
-        else: ret = input(prompt)
+        else: ret = raw_input(prompt)
         if ret == '': ret = default
         return ret
     
     prjname = inputparam(1, 'New project name: ', 'EduCmds')
     
     makeproj(prjname)
-    if len(sys.argv) < 2: input("Press <ENTER> to end.")
+    if len(sys.argv) < 2: raw_input("Press <ENTER> to end.")
