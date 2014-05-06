@@ -75,9 +75,9 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
 
 - Do not want to write C++ code? Please reference to [android/test/src/vgtest/testview/shape](android/test/src/vgtest/testview/shape) package to write your own shapes and commands.
 
-- You can use [thirdparty/newproj.py](thirdparty/newproj.py) to create library project (Recommended as GIT submodule) containing your own shapes and commands. So the TouchVG and TouchVGCore libraries does not require changes.
+- You can use thirdparty/newproj.sh to create library project (Recommended as GIT submodule) containing your own shapes and commands. So the TouchVG and TouchVGCore libraries does not require changes.
 
-  - Enter `thirdparty` directory and type `python newproj.py YourCmds`.
+  - Enter `thirdparty` directory and type `./newproj.sh YourCmds`.
     
   - Need to install python to run the script.
  
