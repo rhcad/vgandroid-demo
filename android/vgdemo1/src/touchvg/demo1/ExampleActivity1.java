@@ -5,6 +5,9 @@ package touchvg.demo1;
 import rhcad.touchvg.IGraphView;
 import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.ViewFactory;
+import rhcad.touchvg.core.MgShape;
+import rhcad.touchvg.core.MgShapeBit;
+import rhcad.touchvg.core.Vector2d;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -124,7 +127,18 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
         this.findViewById(R.id.addSVGFile).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                hlp.insertSVGFromResource(R.raw.text);
+                lockShape(hlp.insertSVGFromResource(R.raw.text));
+            }
+
+            private void lockShape(int sid) {
+                final MgShape sp = hlp.cmdView().shapes().cloneShape(sid);
+                if (sp != null) {
+                    sp.shape().setFlag(MgShapeBit.kMgNoAction, true);       // Not show context buttons
+                    sp.shape().setFlag(MgShapeBit.kMgShapeLocked, true);    // Can't select or change it
+                    sp.shape().offset(new Vector2d(50, 50), -1);            // Offset for test
+                    if (sp.getParent().updateShape(sp))
+                        hlp.cmdView().regenAll(true);
+                }
             }
         });
         this.findViewById(R.id.undoBtn).setOnClickListener(new OnClickListener() {
