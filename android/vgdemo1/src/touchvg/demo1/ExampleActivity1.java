@@ -136,8 +136,8 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
                     sp.shape().setFlag(MgShapeBit.kMgNoAction, true);       // Not show context buttons
                     sp.shape().setFlag(MgShapeBit.kMgShapeLocked, true);    // Can't select or change it
                     sp.shape().offset(new Vector2d(50, 50), -1);            // Offset for test
-                    if (sp.getParent().updateShape(sp))
-                        hlp.cmdView().regenAll(true);
+                    sp.getParent().updateShape(sp);
+                    hlp.cmdView().regenAll(true);
                 }
             }
         });
