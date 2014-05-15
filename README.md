@@ -39,6 +39,13 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
 
 ## Compile for iOS
 
+### Compile with CocoaPods
+
+- Type `pod install` or `pod install --no-repo-update` (Need to install [CocoaPods](http://cocoapods.org)).
+- Open `TestView.xcworkspace` in Xcode, then run the `TestView` demo app.
+
+### Compile without CocoaPods
+
 -  Open `ios/TestVG.xcworkspace` in Xcode, then run the `TestView` demo app.
 
    - The `TestView` project has two targets:

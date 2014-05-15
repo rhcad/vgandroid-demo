@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../thirdparty/TouchVG/ios/TouchVG/TouchVG.xcodeproj">
+      location = "group:../thirdparty/TouchVG/ios/TouchVG.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../thirdparty/DemoCmds/ios/DemoCmds/DemoCmds.xcodeproj">

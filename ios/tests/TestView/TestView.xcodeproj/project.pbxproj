@@ -47,10 +47,12 @@
 		AEF2D56F1609B67200DDB7F2 /* app57.png in Resources */ = {isa = PBXBuildFile; fileRef = AEF2D56D1609B67200DDB7F2 /* app57.png */; };
 		AEF2D5701609B67200DDB7F2 /* app72.png in Resources */ = {isa = PBXBuildFile; fileRef = AEF2D56E1609B67200DDB7F2 /* app72.png */; };
 		AEF2D5B01609BF7D00DDB7F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF2D5AD1609BF7D00DDB7F2 /* main.m */; };
+		EE2AA931927C43A39C3F16B4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D264BF5EE4443E9B0CE5BB5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02FDBEAE189DD22A0038C91F /* TestView-SVG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestView-SVG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D264BF5EE4443E9B0CE5BB5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE03795D181FB31E0049931F /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		AE11A5DD18B32D8D00B88366 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		AE252D2F181FCB0700884B5C /* pencil@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil@2x.png"; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		AEF2D5AD1609BF7D00DDB7F2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AEF2D5AE1609BF7D00DDB7F2 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		AEF2D5B81609C1A900DDB7F2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCA1BB9FF0FE43789F927C05 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../../../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,7 @@
 				AE815F351718EDCB006BC607 /* QuartzCore.framework in Frameworks */,
 				AEF2D52F160964BA00DDB7F2 /* CoreGraphics.framework in Frameworks */,
 				AEF2D52D160964BA00DDB7F2 /* Foundation.framework in Frameworks */,
+				EE2AA931927C43A39C3F16B4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +137,7 @@
 				AEF2D56C1609B67200DDB7F2 /* Resources */,
 				AEF2D529160964BA00DDB7F2 /* Frameworks */,
 				AEF2D527160964BA00DDB7F2 /* Products */,
+				CCA1BB9FF0FE43789F927C05 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +159,7 @@
 				AEF2D52A160964BA00DDB7F2 /* UIKit.framework */,
 				AEF2D52C160964BA00DDB7F2 /* Foundation.framework */,
 				AEF2D52E160964BA00DDB7F2 /* CoreGraphics.framework */,
+				5D264BF5EE4443E9B0CE5BB5 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -224,9 +230,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AEF2D550160964BA00DDB7F2 /* Build configuration list for PBXNativeTarget "TestView" */;
 			buildPhases = (
+				398DF0D018B043368483D057 /* Check Pods Manifest.lock */,
 				AEF2D522160964BA00DDB7F2 /* Sources */,
 				AEF2D523160964BA00DDB7F2 /* Frameworks */,
 				AEF2D524160964BA00DDB7F2 /* Resources */,
+				BB4334380C014CE98AF984A0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -293,6 +301,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		398DF0D018B043368483D057 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BB4334380C014CE98AF984A0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../../../Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		02FDBE92189DD22A0038C91F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -333,8 +374,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				OTHER_LDFLAGS = (
-					"-lTouchVGCore",
-					"-lTouchVG-SVG",
 					"-lDemoCmds",
 					"-lSVGKit-iOS.1.2.0pre",
 					"-ObjC",
@@ -349,8 +388,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				OTHER_LDFLAGS = (
-					"-lTouchVGCore",
-					"-lTouchVG-SVG",
 					"-lDemoCmds",
 					"-lSVGKit-iOS.1.2.0pre",
 					"-ObjC",
@@ -389,11 +426,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"../../../thirdparty/TouchVGCore/core/include/**",
-					"../../../thirdparty/DemoCmds/core/**",
-					../../../thirdparty/TouchVG/ios/include,
-				);
 				INFOPLIST_FILE = ../Classes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
@@ -404,6 +436,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "../../../thirdparty/DemoCmds/core/**";
 			};
 			name = Debug;
 		};
@@ -428,11 +461,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"../../../thirdparty/TouchVGCore/core/include/**",
-					"../../../thirdparty/DemoCmds/core/**",
-					../../../thirdparty/TouchVG/ios/include,
-				);
 				INFOPLIST_FILE = ../Classes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
@@ -443,19 +471,17 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "../../../thirdparty/DemoCmds/core/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		AEF2D551160964BA00DDB7F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCA1BB9FF0FE43789F927C05 /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				OTHER_LDFLAGS = (
-					"-lTouchVGCore",
-					"-lTouchVG",
-					"-lDemoCmds",
-				);
+				OTHER_LDFLAGS = "-lDemoCmds";
 				PRODUCT_NAME = TestView;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				WRAPPER_EXTENSION = app;
@@ -464,13 +490,10 @@
 		};
 		AEF2D552160964BA00DDB7F2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCA1BB9FF0FE43789F927C05 /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				OTHER_LDFLAGS = (
-					"-lTouchVGCore",
-					"-lTouchVG",
-					"-lDemoCmds",
-				);
+				OTHER_LDFLAGS = "-lDemoCmds";
 				PRODUCT_NAME = TestView;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				WRAPPER_EXTENSION = app;
