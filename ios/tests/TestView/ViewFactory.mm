@@ -5,6 +5,7 @@
 #import "LargeView1.h"
 #import "GiViewHelper.h"
 #include "DemoCmds.h"
+#import "ARCMacro.h"
 
 static UIViewController *_tmpController = nil;
 

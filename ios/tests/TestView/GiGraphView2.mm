@@ -6,6 +6,7 @@
 #import "GiViewHelper.h"
 #include "RandomShape.h"
 #include "gicoreview.h"
+#import "ARCMacro.h"
 
 static char _lastVgFile[256] = { 0 };
 

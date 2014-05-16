@@ -7,6 +7,7 @@
 #import <QuartzCore/QuartzCore.h>
 #include "GiCanvasAdapter.h"
 #include "gicoreview.h"
+#import "ARCMacro.h"
 
 //! 动态图形的绘图视图类
 @interface GiDynDrawView1 : UIView {

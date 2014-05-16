@@ -1,4 +1,5 @@
 #import "CalloutView.h"
+#import "ARCMacro.h"
 
 static CalloutView* _view = nil;
 
