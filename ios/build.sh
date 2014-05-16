@@ -9,7 +9,7 @@ iphoneos61=`xcodebuild -showsdks | grep -i iphoneos6.1`
 iphoneos51=`xcodebuild -showsdks | grep -i iphoneos5.1`
 iphoneos43=`xcodebuild -showsdks | grep -i iphoneos4.3`
 
-iosvgpath=../thirdparty/TouchVG/ios/TouchVG
+iosvgpath=../thirdparty/TouchVG/ios
 corepath=../thirdparty/TouchVGCore/ios/TouchVGCore
 demopath=../thirdparty/DemoCmds/ios/DemoCmds
 SVG_path=../thirdparty/SVGKit
@@ -50,14 +50,14 @@ fi
 
 mkdir -p output/TouchVG
 cp -R $iosvgpath/build/Release-universal/*.a output
-cp -R $iosvgpath/build/Release-universal/include/TouchVG/*.h output/TouchVG
+cp -R $iosvgpath/build/Release-universal/include/TouchVG output
 
 mkdir -p output/DemoCmds
 cp -R $demopath/build/Release-universal/libDemoCmds.a output
-cp -R $demopath/build/Release-universal/include/DemoCmds/*.h output/DemoCmds
+cp -R $demopath/build/Release-universal/include/DemoCmds output
 
 mkdir -p output/TouchVGCore
 cp -R $corepath/build/Release-universal/libTouchVGCore.a output
-cp -R $corepath/build/Release-universal/include/TouchVGCore/*.h output/TouchVGCore
+cp -R $corepath/build/Release-universal/include/TouchVGCore output
 
 cp -R $SVG_path/build/Release-universal/*.a output
