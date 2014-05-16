@@ -39,26 +39,12 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
 
 ## Compile for iOS
 
-### Compile with CocoaPods
-
-- Type `pod install` or `pod install --no-repo-update` (Need to install [CocoaPods](http://cocoapods.org)).
+- Type `pod install` (Need to install [CocoaPods](http://cocoapods.org)).
 - Open `TestView.xcworkspace` in Xcode, then run the `TestView` demo app.
-
-### Compile without CocoaPods
-
--  Open `ios/TestVG.xcworkspace` in Xcode, then run the `TestView` demo app.
-
-   - The `TestView` project has two targets:
    
-     - `TestView` target using `libTouchVG.a` does not support SVG display.
-     - `TestView-SVG` target using `libTouchVG-SVG.a` and `SVGKit` can display SVG shapes.
+   - `TestView` target using `libTouchVG.a` does not support SVG display.
 
-   - Static libraries required can be compiled in two ways:
-   
-        - Enter `ios` directory, then type `./build.sh` (Need to configure Xcode command line environment) to compile all static libraries to the `ios/output` directory.
-          - Type `./build.sh -arch arm64` to make for iOS 64-bit.
-          - Type `./build.sh clean` to remove object files.
-        - Or select and build each library project in Xcode IDE.
+   - `TestView-SVG` target using `libTouchVG-SVG.a` and `SVGKit` can display SVG shapes.
 
    - To run on device, you may need to change the Bundle Identifier of the demo application, such as "com.yourcompany.TestView", and choose your own development certificate (Code Signing).
 
