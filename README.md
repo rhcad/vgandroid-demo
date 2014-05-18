@@ -39,7 +39,7 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
 
 ## Compile for iOS
 
-- Type `pod install` (Need to install [CocoaPods](http://cocoapods.org)).
+- Type `pod install` or `pod install  --no-repo-update` (Need to install [CocoaPods](http://cocoapods.org)).
 - Open `TestView.xcworkspace` in Xcode, then run the `TestView` demo app.
    
    - `TestView` target using `libTouchVG.a` does not support SVG display.
@@ -74,7 +74,7 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
 
 - You can use thirdparty/newproj.sh to create library project (Recommended as GIT submodule) containing your own shapes and commands. So the TouchVG and TouchVGCore libraries does not require changes.
 
-  - Enter `thirdparty` directory and type `./newproj.sh YourCmds`.
+  - Checkout and enter [DemoCmds](https://github.com/touchvg/DemoCmds) directory and type `python newproj.py`.
     
   - Need to install python to run the script.
  
