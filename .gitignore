@@ -52,3 +52,4 @@ CppDepend*
 *.hh*
 *_wrap.cxx
 ios/output
+android/output

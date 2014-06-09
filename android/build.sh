@@ -5,8 +5,8 @@
 # Type `./build.sh APP_ABI=x86` or `./build.sh APP_ABI=x86 -B` to build for the x86 Emulator.
 # Type `./build.sh -swig APP_ABI=x86` to re-generate JNI classes and build for the x86 Emulator.
 #
-cd ../../TouchVG/android; sh build.sh $1 $2; cd ../../../android
-cd ../../DemoCmds/android; sh build.sh $1 $2; cd ../../../android
+cd ../../TouchVG/android; sh build.sh $1 $2; cd ../../TouchVGTest/android
+cd ../../DemoCmds/android; sh build.sh $1 $2; cd ../../TouchVGTest/android
 
 cp -vR ../../TouchVG/android/TouchVG/libs/armeabi   test/libs
 cp -vR ../../TouchVG/android/TouchVG/libs/x86       test/libs
