@@ -33,10 +33,8 @@ public class SFGraphView1 extends SFGraphView implements IGraphView.OnFirstRegen
         int flags = ((Activity) context).getIntent().getExtras().getInt("flags");
         final IViewHelper helper = ViewFactory.createHelper(this);
 
-        if ((flags & TestFlags.RAND_SHAPES) != 0) {
-            helper.addShapesForTest();
-        }
-        if (savedInstanceState == null && (flags & TestFlags.RECORD) != 0) {
+        if (savedInstanceState == null
+                && (flags & (TestFlags.RECORD | TestFlags.RAND_SHAPES)) != 0) {
             setOnFirstRegenListener(this);
         }
 
@@ -86,6 +84,9 @@ public class SFGraphView1 extends SFGraphView implements IGraphView.OnFirstRegen
         int flags = ((Activity) getContext()).getIntent().getExtras().getInt("flags");
         final IViewHelper helper = ViewFactory.createHelper(view);
 
+        if ((flags & TestFlags.RAND_SHAPES) != 0) {
+            helper.addShapesForTest();
+        }
         if ((flags & TestFlags.RECORD) != 0) {
             helper.startRecord(PATH + "record");
         }
