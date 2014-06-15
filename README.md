@@ -39,8 +39,9 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
 
 ## Compile for iOS
 
-- Type `pod install` or `pod install  --no-repo-update` (Need to install [CocoaPods](http://cocoapods.org)).
-- Open `TestView.xcworkspace` in Xcode, then run the `TestView` demo app.
+- Cd the 'ios' folder of this project and type `./build.sh` or `./build.sh -arch arm64` to checkout and build libraries needed.
+
+- Open `ios/TestVG.xcworkspace` in Xcode, then run the `TestView` demo app.
    
    - `TestView` target using `libTouchVG.a` does not support SVG display.
 

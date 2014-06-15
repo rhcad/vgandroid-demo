@@ -25,8 +25,6 @@
 		02FDBEA8189DD22A0038C91F /* fonts.svg in Resources */ = {isa = PBXBuildFile; fileRef = AE3B01141811064D0004AAC7 /* fonts.svg */; };
 		02FDBEA9189DD22A0038C91F /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = AE03795D181FB31E0049931F /* pencil.png */; };
 		02FDBEAA189DD22A0038C91F /* pencil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE252D2F181FCB0700884B5C /* pencil@2x.png */; };
-		1DE33A1CF57448B29A119BE5 /* libPods-TestView-TestView-SVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D3681A302440D0A242874C /* libPods-TestView-TestView-SVG.a */; };
-		A3F23D650A4B404DB3F6AC0A /* libPods-TestView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 658704A296D04B1FB51B3368 /* libPods-TestView.a */; };
 		AE03795E181FB31E0049931F /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = AE03795D181FB31E0049931F /* pencil.png */; };
 		AE11A5DE18B32D8D00B88366 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE11A5DD18B32D8D00B88366 /* CoreText.framework */; };
 		AE252D30181FCB0700884B5C /* pencil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE252D2F181FCB0700884B5C /* pencil@2x.png */; };
@@ -34,6 +32,8 @@
 		AE3726EE18C9C53200B756C1 /* GiGraphView2.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE3726ED18C9C53200B756C1 /* GiGraphView2.mm */; };
 		AE3726EF18C9C53200B756C1 /* GiGraphView2.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE3726ED18C9C53200B756C1 /* GiGraphView2.mm */; };
 		AE3B01151811064D0004AAC7 /* fonts.svg in Resources */ = {isa = PBXBuildFile; fileRef = AE3B01141811064D0004AAC7 /* fonts.svg */; };
+		AE4671561929DE310093D89F /* TouchVG.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE4671551929DE310093D89F /* TouchVG.bundle */; };
+		AE4671571929DE380093D89F /* TouchVG.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE4671551929DE310093D89F /* TouchVG.bundle */; };
 		AE4E6F0616129337006CAA5C /* ViewFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE4E6F0416129337006CAA5C /* ViewFactory.mm */; };
 		AE53750E177D26980050CC4F /* GiGraphView1.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE53750D177D26980050CC4F /* GiGraphView1.mm */; };
 		AE815F351718EDCB006BC607 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE815F341718EDCB006BC607 /* QuartzCore.framework */; };
@@ -51,9 +51,6 @@
 
 /* Begin PBXFileReference section */
 		02FDBEAE189DD22A0038C91F /* TestView-SVG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestView-SVG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		37E84EE064F845649662EE97 /* Pods-TestView-TestView-SVG.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestView-TestView-SVG.xcconfig"; path = "../../../Pods/Pods-TestView-TestView-SVG.xcconfig"; sourceTree = "<group>"; };
-		658704A296D04B1FB51B3368 /* libPods-TestView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1D3681A302440D0A242874C /* libPods-TestView-TestView-SVG.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestView-TestView-SVG.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE03795D181FB31E0049931F /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		AE11A5DD18B32D8D00B88366 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		AE252D2F181FCB0700884B5C /* pencil@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil@2x.png"; sourceTree = "<group>"; };
@@ -63,6 +60,7 @@
 		AE3726ED18C9C53200B756C1 /* GiGraphView2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GiGraphView2.mm; sourceTree = "<group>"; };
 		AE3B01141811064D0004AAC7 /* fonts.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fonts.svg; sourceTree = "<group>"; };
 		AE3B011C18110A610004AAC7 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		AE4671551929DE310093D89F /* TouchVG.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TouchVG.bundle; path = ../../../../TouchVG/ios/TouchVG.bundle; sourceTree = "<group>"; };
 		AE4E6F0416129337006CAA5C /* ViewFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewFactory.mm; sourceTree = "<group>"; };
 		AE53750C177D26980050CC4F /* GiGraphView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiGraphView1.h; sourceTree = "<group>"; };
 		AE53750D177D26980050CC4F /* GiGraphView1.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GiGraphView1.mm; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 		AEF2D5AD1609BF7D00DDB7F2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AEF2D5AE1609BF7D00DDB7F2 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		AEF2D5B81609C1A900DDB7F2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FDA64CBF76334022AD871D16 /* Pods-TestView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestView.xcconfig"; path = "../../../Pods/Pods-TestView.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +95,6 @@
 				02FDBEA0189DD22A0038C91F /* QuartzCore.framework in Frameworks */,
 				02FDBEA3189DD22A0038C91F /* CoreGraphics.framework in Frameworks */,
 				02FDBEA2189DD22A0038C91F /* Foundation.framework in Frameworks */,
-				1DE33A1CF57448B29A119BE5 /* libPods-TestView-TestView-SVG.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +106,6 @@
 				AE815F351718EDCB006BC607 /* QuartzCore.framework in Frameworks */,
 				AEF2D52F160964BA00DDB7F2 /* CoreGraphics.framework in Frameworks */,
 				AEF2D52D160964BA00DDB7F2 /* Foundation.framework in Frameworks */,
-				A3F23D650A4B404DB3F6AC0A /* libPods-TestView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +133,6 @@
 				AEF2D56C1609B67200DDB7F2 /* Resources */,
 				AEF2D529160964BA00DDB7F2 /* Frameworks */,
 				AEF2D527160964BA00DDB7F2 /* Products */,
-				FDA64CBF76334022AD871D16 /* Pods-TestView.xcconfig */,
-				37E84EE064F845649662EE97 /* Pods-TestView-TestView-SVG.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,8 +154,6 @@
 				AEF2D52A160964BA00DDB7F2 /* UIKit.framework */,
 				AEF2D52C160964BA00DDB7F2 /* Foundation.framework */,
 				AEF2D52E160964BA00DDB7F2 /* CoreGraphics.framework */,
-				658704A296D04B1FB51B3368 /* libPods-TestView.a */,
-				A1D3681A302440D0A242874C /* libPods-TestView-TestView-SVG.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -198,6 +189,7 @@
 		AEF2D56C1609B67200DDB7F2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AE4671551929DE310093D89F /* TouchVG.bundle */,
 				AE252D2F181FCB0700884B5C /* pencil@2x.png */,
 				AE03795D181FB31E0049931F /* pencil.png */,
 				AE3B01141811064D0004AAC7 /* fonts.svg */,
@@ -215,11 +207,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02FDBEAB189DD22A0038C91F /* Build configuration list for PBXNativeTarget "TestView-SVG" */;
 			buildPhases = (
-				F8B3654E627C4E3585705148 /* Check Pods Manifest.lock */,
 				02FDBE92189DD22A0038C91F /* Sources */,
 				02FDBE9C189DD22A0038C91F /* Frameworks */,
 				02FDBEA4189DD22A0038C91F /* Resources */,
-				6BF1F87E7BB54D3F911FACD8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,11 +224,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AEF2D550160964BA00DDB7F2 /* Build configuration list for PBXNativeTarget "TestView" */;
 			buildPhases = (
-				B4257B47877D4A27ABDA645B /* Check Pods Manifest.lock */,
 				AEF2D522160964BA00DDB7F2 /* Sources */,
 				AEF2D523160964BA00DDB7F2 /* Frameworks */,
 				AEF2D524160964BA00DDB7F2 /* Resources */,
-				7ABF0CDC98AA41B8960875AF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -255,7 +243,7 @@
 		AEF2D51D160964BA00DDB7F2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = github.rhcad;
 			};
 			buildConfigurationList = AEF2D520160964BA00DDB7F2 /* Build configuration list for PBXProject "TestView" */;
@@ -281,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE4671571929DE380093D89F /* TouchVG.bundle in Resources */,
 				02FDBEA5189DD22A0038C91F /* app57.png in Resources */,
 				02FDBEA6189DD22A0038C91F /* app72.png in Resources */,
 				02FDBEA8189DD22A0038C91F /* fonts.svg in Resources */,
@@ -293,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE4671561929DE310093D89F /* TouchVG.bundle in Resources */,
 				AEF2D56F1609B67200DDB7F2 /* app57.png in Resources */,
 				AEF2D5701609B67200DDB7F2 /* app72.png in Resources */,
 				AE3B01151811064D0004AAC7 /* fonts.svg in Resources */,
@@ -302,69 +292,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		6BF1F87E7BB54D3F911FACD8 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../../Pods/Pods-TestView-TestView-SVG-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7ABF0CDC98AA41B8960875AF /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../../Pods/Pods-TestView-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B4257B47877D4A27ABDA645B /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F8B3654E627C4E3585705148 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		02FDBE92189DD22A0038C91F /* Sources */ = {
@@ -404,8 +331,14 @@
 /* Begin XCBuildConfiguration section */
 		02FDBEAC189DD22A0038C91F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37E84EE064F845649662EE97 /* Pods-TestView-TestView-SVG.xcconfig */;
 			buildSettings = {
+				OTHER_LDFLAGS = (
+					"-lTouchVGCore",
+					"-lTouchVG-SVG",
+					"-lDemoCmds",
+					"-lSVGKit-iOS.1.2.0",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "TestView-SVG";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				WRAPPER_EXTENSION = app;
@@ -414,8 +347,14 @@
 		};
 		02FDBEAD189DD22A0038C91F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37E84EE064F845649662EE97 /* Pods-TestView-TestView-SVG.xcconfig */;
 			buildSettings = {
+				OTHER_LDFLAGS = (
+					"-lTouchVGCore",
+					"-lTouchVG-SVG",
+					"-lDemoCmds",
+					"-lSVGKit-iOS.1.2.0",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "TestView-SVG";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				WRAPPER_EXTENSION = app;
@@ -449,8 +388,18 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../../TouchVGCore/core/include/**",
+					../../../../TouchVGPlay/ios/include,
+					"../../../../DemoCmds/core/**",
+					../../../../TouchVG/ios/include,
+				);
 				INFOPLIST_FILE = ../Classes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)",
+					../../output,
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -479,9 +428,18 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../../TouchVGCore/core/include/**",
+					../../../../TouchVGPlay/ios/include,
+					"../../../../DemoCmds/core/**",
+					../../../../TouchVG/ios/include,
+				);
 				INFOPLIST_FILE = ../Classes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
-				ONLY_ACTIVE_ARCH = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)",
+					../../output,
+				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -492,9 +450,13 @@
 		};
 		AEF2D551160964BA00DDB7F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDA64CBF76334022AD871D16 /* Pods-TestView.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				OTHER_LDFLAGS = (
+					"-lTouchVGCore",
+					"-lTouchVG",
+					"-lDemoCmds",
+				);
 				PRODUCT_NAME = TestView;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				WRAPPER_EXTENSION = app;
@@ -503,9 +465,13 @@
 		};
 		AEF2D552160964BA00DDB7F2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDA64CBF76334022AD871D16 /* Pods-TestView.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				OTHER_LDFLAGS = (
+					"-lTouchVGCore",
+					"-lTouchVG",
+					"-lDemoCmds",
+				);
 				PRODUCT_NAME = TestView;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				WRAPPER_EXTENSION = app;
