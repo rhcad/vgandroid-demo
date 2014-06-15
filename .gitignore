@@ -21,7 +21,6 @@ xcshareddata
 *.pbxuser
 *.mode2v3
 *.mode1v3
-*.xcworkspace
 
 #do pod install yourself
 Pods/*
@@ -53,3 +52,4 @@ CppDepend*
 *_wrap.cxx
 ios/output
 android/output
+*.so

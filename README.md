@@ -15,12 +15,26 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
 
 # How to Compile
 
+## Compile for iOS
+
+- Cd the `ios` folder of this project and type `./build.sh` or `./build.sh -arch arm64` to checkout and build libraries needed.
+
+- Open `ios/TestVG.xcworkspace` in Xcode, then run the `TestView` demo app.
+   
+   - `TestView` target using `libTouchVG.a` does not support SVG display.
+
+   - `TestView-SVG` target using `libTouchVG-SVG.a` and `SVGKit` can display SVG shapes.
+
+   - To run on device, you may need to change the Bundle Identifier of the demo application, such as "com.yourcompany.TestView", and choose your own development certificate (Code Signing).
+
 ## Compile for Android
 
 - Import all projects of this project in eclipse, then run `VGTest` or `vgdemo1` project to view the demonstration.
 
   - Android SDK version of the projects may need to modify according to your installation.
   - Recommend using the newer [ADT Bundle](http://developer.android.com/sdk/index.html) to avoid complex configuration.
+  
+- You can download the [prebuild libraries](https://github.com/touchvg/TouchVGTest/archive/android_prebuild.zip) and extract to `android/test/libs`.
 
 -  To regenerate libtouchvg.so and libdemocmds.so, please enter `android` directory of this project, then type `./build.sh`
 (Need to add the [NDK](http://developer.android.com/tools/sdk/ndk/index.html) installation location to your PATH environment variable).
@@ -36,18 +50,6 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
 
    - To regenerate the kernel JNI classes, type `./build.sh-swig`
 (Need to install [SWIG](http://sourceforge.net/projects/swig/files/), and add the location to PATH).
-
-## Compile for iOS
-
-- Cd the 'ios' folder of this project and type `./build.sh` or `./build.sh -arch arm64` to checkout and build libraries needed.
-
-- Open `ios/TestVG.xcworkspace` in Xcode, then run the `TestView` demo app.
-   
-   - `TestView` target using `libTouchVG.a` does not support SVG display.
-
-   - `TestView-SVG` target using `libTouchVG-SVG.a` and `SVGKit` can display SVG shapes.
-
-   - To run on device, you may need to change the Bundle Identifier of the demo application, such as "com.yourcompany.TestView", and choose your own development certificate (Code Signing).
 
 ## Compile for Windows
 
