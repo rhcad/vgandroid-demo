@@ -7,13 +7,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup;
 
+// Testing Activity using SFGraphView
 public class ExampleActivitySF extends ExampleActivity1 {
 
     @Override
     protected void createGraphView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_example1);
         final ViewGroup layout = (ViewGroup) this.findViewById(R.id.frame);
-        hlp.createSurfaceView(this, layout);
+        hlp.createSurfaceView(this, layout, savedInstanceState);
         hlp.getView().setBackgroundColor(Color.GRAY);
     }
 

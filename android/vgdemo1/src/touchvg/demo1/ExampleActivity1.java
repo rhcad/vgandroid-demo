@@ -15,6 +15,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
+// Testing Activity using StdGraphView
+// Upload testing file: adb push YourTestFile.vg mnt/sdcard/TouchVG/demo.vg
+//
 public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRegenListener {
     protected IViewHelper hlp = ViewFactory.createHelper();
     protected static final String PATH = "mnt/sdcard/TouchVG/";
@@ -37,7 +40,7 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
     protected void createGraphView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_example1);
         final ViewGroup layout = (ViewGroup) this.findViewById(R.id.frame);
-        hlp.createGraphView(this, layout);
+        hlp.createGraphView(this, layout, savedInstanceState);
         hlp.getView().setBackgroundColor(Color.GRAY);
     }
 
