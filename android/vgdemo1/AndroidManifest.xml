@@ -30,8 +30,12 @@
             android:label="@string/title_activity_example1" >
         </activity>
         <activity
-            android:name=".AnimationActivity1"
-            android:label="@string/title_activity_animation1" >
+            android:name=".ExampleActivityPager"
+            android:label="@string/title_activity_example1" >
+        </activity>
+        <activity
+            android:name=".ExampleActivityImagePager"
+            android:label="@string/title_activity_example1" >
         </activity>
     </application>
 

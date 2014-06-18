@@ -5,7 +5,7 @@
     <string name="title_activity_main">vgdemo1 views</string>
     <string name="title_activity_example1">TouchVG example1</string>
     <string name="title_activity_animation1">TouchVG animation1</string>
-    
+
     <string name="selectBtn">选择</string>
     <string name="splinesBtn">曲线</string>
     <string name="lineBtn">线段</string>
@@ -17,5 +17,6 @@
     <string name="addSVGFile">SVG</string>
     <string name="undoBtn">撤销</string>
     <string name="redoBtn">重做</string>
+    <string name="lockGesture">绘图</string>
 
 </resources>

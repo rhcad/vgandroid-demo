@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRegenListener {
     protected IViewHelper hlp = ViewFactory.createHelper();
     protected static final String PATH = "mnt/sdcard/TouchVG/";
-    protected static final String VGFILE = PATH + "demo.vg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +28,18 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
 
         this.createGraphView(savedInstanceState);
         this.initButtons();
+
+        if (hlp.getGraphView() != null) {
+            afterViewCreated(hlp);
+            if (savedInstanceState == null) {
+                hlp.getGraphView().setOnFirstRegenListener(this);
+            }
+        }
+    }
+
+    protected void afterViewCreated(IViewHelper hlp) {
         hlp.setCommand("splines");
         hlp.setStrokeWidth(5);
-
-        if (savedInstanceState == null) {
-            hlp.getGraphView().setOnFirstRegenListener(this);
-        }
     }
 
     protected void createGraphView(Bundle savedInstanceState) {
@@ -42,6 +47,10 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
         final ViewGroup layout = (ViewGroup) this.findViewById(R.id.frame);
         hlp.createGraphView(this, layout, savedInstanceState);
         hlp.getView().setBackgroundColor(Color.GRAY);
+    }
+
+    protected String getFileName() {
+        return "demo.vg";
     }
 
     @Override
@@ -118,30 +127,19 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
         this.findViewById(R.id.saveBtn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                hlp.saveToFile(VGFILE);
+                hlp.saveToFile(PATH + "demo.vg");
             }
         });
         this.findViewById(R.id.loadBtn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                hlp.loadFromFile(VGFILE);
+                hlp.loadFromFile(PATH + "demo.vg");
             }
         });
         this.findViewById(R.id.addSVGFile).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 lockShape(hlp.insertSVGFromResource(R.raw.text));
-            }
-
-            private void lockShape(int sid) {
-                final MgShape sp = hlp.cmdView().shapes().cloneShape(sid);
-                if (sp != null) {
-                    sp.shape().setFlag(MgShapeBit.kMgNoAction, true);       // Not show context buttons
-                    sp.shape().setFlag(MgShapeBit.kMgShapeLocked, true);    // Can't select or change it
-                    sp.shape().offset(new Vector2d(50, 50), -1);            // Offset for test
-                    sp.getParent().updateShape(sp);
-                    hlp.cmdView().regenAll(true);
-                }
             }
         });
         this.findViewById(R.id.undoBtn).setOnClickListener(new OnClickListener() {
@@ -156,5 +154,26 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
                 hlp.redo();
             }
         });
+        this.findViewById(R.id.lockGesture).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchGestureEnabled();
+            }
+        });
+    }
+
+    protected void switchGestureEnabled() {
+        hlp.setGestureEnabled(!hlp.getGestureEnabled());
+    }
+
+    protected void lockShape(int sid) {
+        final MgShape sp = hlp.cmdView().shapes().cloneShape(sid);
+        if (sp != null) {
+            sp.shape().setFlag(MgShapeBit.kMgNoAction, true);       // Not show context buttons
+            sp.shape().setFlag(MgShapeBit.kMgShapeLocked, true);    // Can't select or change it
+            sp.shape().offset(new Vector2d(50, 50), -1);            // Offset for test
+            sp.getParent().updateShape(sp);
+            hlp.cmdView().regenAll(true);
+        }
     }
 }
