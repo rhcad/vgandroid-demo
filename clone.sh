@@ -10,6 +10,8 @@ fi
 if [ ! -f ../DemoCmds/ios/build.sh ] ; then
     git clone https://github.com/touchvg/DemoCmds ../DemoCmds
 fi
-#if [ ! -f ../SVGKit/SVGKit.podspec ] ; then
-#git clone https://github.com/SVGKit/SVGKit ../SVGKit
-#fi
+if [ "$1"x = "-ios"x ] ; then
+    if [ ! -f ../SVGKit/SVGKit.podspec ] ; then
+        git clone https://github.com/SVGKit/SVGKit ../SVGKit
+    fi
+fi

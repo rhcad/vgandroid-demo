@@ -3,7 +3,7 @@
 # Type './build.sh -arch arm64' to make iOS libraries for iOS 64-bit.
 # Type './build.sh clean' to remove object files.
 
-cd ..; sh clone.sh; cd ios
+cd ..; sh clone.sh -ios; cd ios
 
 iphoneos71=`xcodebuild -showsdks | grep -i iphoneos7.1`
 iphoneos70=`xcodebuild -showsdks | grep -i iphoneos7.0`
