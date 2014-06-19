@@ -163,7 +163,7 @@ public class GraphViewCached extends View {
         public void regenAll(boolean changed) {
             synchronized (mCoreView) {
                 if (changed)
-                    mCoreView.submitBackDoc(mViewAdapter);
+                    mCoreView.submitBackDoc(mViewAdapter, changed);
                 mCoreView.submitDynamicShapes(mViewAdapter);
             }
             if (mCacheBitmap != null) {
@@ -176,7 +176,7 @@ public class GraphViewCached extends View {
         @Override
         public void regenAppend(int sid, int playh) {
             synchronized (mCoreView) {
-                mCoreView.submitBackDoc(mViewAdapter);
+                mCoreView.submitBackDoc(mViewAdapter, true);
                 mCoreView.submitDynamicShapes(mViewAdapter);
             }
             if (mCacheBitmap != null) {

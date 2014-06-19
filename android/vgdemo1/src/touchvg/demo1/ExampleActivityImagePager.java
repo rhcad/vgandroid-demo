@@ -2,11 +2,11 @@
 
 package touchvg.demo1;
 
-import rhcad.touchvg.IGraphView;
 import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.ViewFactory;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -21,6 +21,7 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
     private FrameLayout[] mViews = new FrameLayout[5];
     private int[] mChangeCounts = new int[5];
     private Bundle mInstanceState;
+    private Drawable mBackground;
 
     @Override
     protected void createGraphView(Bundle savedInstanceState) {
@@ -30,36 +31,13 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
         mViewPager.setAdapter(new ViewPagerAdapter());
     }
 
-    protected String getFileName(int position) {
+    private String getFileName(int position) {
         return position + ".vg";
     }
 
     @Override
     protected String getFileName() {
         return (mViewPager != null ? mViewPager.getCurrentItem() : 0) + ".vg";
-    }
-
-    @Override
-    protected void switchGestureEnabled() {
-        int position = mViewPager.getCurrentItem();
-        final FrameLayout layout = mViews[position];
-
-        try {
-            quitDrawing((IGraphView) layout.getChildAt(0), position);
-            addImageView(position);
-        } catch (ClassCastException e) {
-            quitDrawing(null, position);
-            addDrawingView(position, PATH + getFileName(position));
-        }
-    }
-
-    private void addDrawingView(int position, String filename) {
-        hlp.createSurfaceView(this, mViews[position]);
-        hlp.setBackgroundDrawable(mViewPager.getBackground());
-        hlp.setZoomEnabled(false);
-        hlp.loadFromFile(filename);
-        mChangeCounts[position] = hlp.getChangeCount();
-        afterViewCreated(hlp);
     }
 
     @Override
@@ -76,24 +54,41 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
         super.onRestoreInstanceState(savedInstanceState);
     }
 
-    private void quitDrawing(IGraphView view, int position) {
-        if (view == null) {
-            final ImageView imageView = (ImageView) mViews[position].getChildAt(0);
-            if (imageView != null) {
-                imageView.setImageBitmap(null);
-                mViews[position].removeAllViews();
-            }
-        } else {
-            final IViewHelper tmphlp = ViewFactory.createHelper(view);
+    @Override
+    protected void switchGestureEnabled() {
+        int position = mViewPager.getCurrentItem();
+        if (!closeDrawing(position)) {
+            addDrawingView(position, PATH + getFileName(position));
+        }
+    }
 
-            if (tmphlp.getView() == hlp.getView())
+    private boolean closeDrawing(int position) {
+        return closeDrawing(ViewFactory.createHelper(mViews[position]), position);
+    }
+
+    private boolean closeDrawing(IViewHelper tmphlp, int position) {
+        if (tmphlp != null && tmphlp.getView() != null) {
+            if (tmphlp != hlp && tmphlp.getView() == hlp.getView()) {
                 hlp.setGraphView(null);
-            if (mChangeCounts[position] != tmphlp.getChangeCount()) {
+            }
+
+            boolean changed = (mChangeCounts[position] != tmphlp.getChangeCount());
+            final ImageView imageView = tmphlp.getImageViewForSurface();
+
+            if (changed) {
                 tmphlp.saveToFile(PATH + getFileName(position));
-                tmphlp.exportPNG(PATH + getFileName(position));
+                tmphlp.exportPNG(PATH + getFileName(position), false);
+            }
+            if (imageView != null && changed) {
+                final Bitmap bitmap = BitmapFactory.decodeFile(PATH + position + ".png");
+                imageView.setImageBitmap(bitmap != null ? bitmap
+                        : BitmapFactory.decodeResource(getResources(), R.drawable.dummy));
             }
             tmphlp.close();
+            return true;
         }
+
+        return false;
     }
 
     private void addImageView(int position) {
@@ -102,6 +97,15 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
         imageView.setImageBitmap(bitmap != null ? bitmap : BitmapFactory.decodeResource(
                 getResources(), R.drawable.dummy));
         mViews[position].addView(imageView);
+    }
+
+    private void addDrawingView(int position, String filename) {
+        hlp.createSurfaceAndImageView(this, mViews[position], mInstanceState);
+        hlp.setBackgroundDrawable(mBackground);
+        //hlp.setZoomEnabled(false);
+        hlp.loadFromFile(filename);
+        mChangeCounts[position] = hlp.getChangeCount();
+        afterViewCreated(hlp);
     }
 
     private class ViewPagerAdapter extends PagerAdapter {
@@ -118,15 +122,19 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
+            if (mBackground == null) {
+                mBackground = mViewPager.getBackground();
+            }
             if (mViews[position] == null) {
                 mViews[position] = new FrameLayout(ExampleActivityImagePager.this);
-                if (mInstanceState != null && mInstanceState.getBoolean("drawing")
-                        && mInstanceState.getInt("page") == position) {
-                    addDrawingView(position, mInstanceState.getBundle("vg").getString("bakFile"));
-                    mInstanceState = null;
-                } else {
-                    addImageView(position);
-                }
+                addImageView(position);
+            }
+            if (mInstanceState != null && mInstanceState.getBoolean("drawing")
+                    && mInstanceState.getInt("page") == position) {
+                addDrawingView(position, mInstanceState.getBundle("vg").getString("bakFile"));
+                mInstanceState = null;
+            } else if (mViewPager.getCurrentItem() == position) {
+                closeDrawing(hlp, mViewPager.getCurrentItem());
             }
             container.addView(mViews[position]);
             return mViews[position];
@@ -135,11 +143,11 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             final FrameLayout layout = mViews[position];
+            final ImageView imageView = (ImageView) mViews[position].getChildAt(0);
 
-            try {
-                quitDrawing((IGraphView) layout.getChildAt(0), position);
-            } catch (ClassCastException e) {
-                quitDrawing(null, position);
+            if (imageView != null) {
+                imageView.setImageBitmap(null);
+                mViews[position].removeAllViews();
             }
             container.removeView(layout);
             mViews[position] = null;

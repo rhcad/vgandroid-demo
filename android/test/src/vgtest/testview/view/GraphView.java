@@ -131,7 +131,7 @@ public class GraphView extends View {
         public void regenAll(boolean changed) {
             synchronized (mCoreView) {
                 if (changed)
-                    mCoreView.submitBackDoc(mViewAdapter);
+                    mCoreView.submitBackDoc(mViewAdapter, changed);
                 mCoreView.submitDynamicShapes(mViewAdapter);
             }
             doDraw();

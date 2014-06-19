@@ -71,7 +71,7 @@ public:
         if (_view.window) {
             if (changed) {
                 _sid = 0;
-                _core->submitBackDoc(this);
+                _core->submitBackDoc(this, changed);
             }
             _core->submitDynamicShapes(this);
             [_view setNeedsDisplay];
@@ -82,7 +82,7 @@ public:
     virtual void regenAppend(int sid, long playh) {
         if (_view.window) {
             _sid = sid;
-            _core->submitBackDoc(this);
+            _core->submitBackDoc(this, true);
             _core->submitDynamicShapes(this);
             _tmpshot = nil;                 // renderInContext可能会调用drawRect
             _tmpshot = snapshot();
