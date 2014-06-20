@@ -55,6 +55,14 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
     }
 
     @Override
+    public void onDestroy() {
+        if (mViewPager != null) {
+            closeDrawing(hlp, mViewPager.getCurrentItem());
+        }
+        super.onDestroy();
+    }
+
+    @Override
     protected void switchGestureEnabled() {
         int position = mViewPager.getCurrentItem();
         if (!closeDrawing(position)) {
@@ -72,17 +80,9 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
                 hlp.setGraphView(null);
             }
 
-            boolean changed = (mChangeCounts[position] != tmphlp.getChangeCount());
-            final ImageView imageView = tmphlp.getImageViewForSurface();
-
-            if (changed) {
+            if (mChangeCounts[position] != tmphlp.getChangeCount()) {
                 tmphlp.saveToFile(PATH + getFileName(position));
-                tmphlp.exportPNG(PATH + getFileName(position), false);
-            }
-            if (imageView != null && changed) {
-                final Bitmap bitmap = BitmapFactory.decodeFile(PATH + position + ".png");
-                imageView.setImageBitmap(bitmap != null ? bitmap
-                        : BitmapFactory.decodeResource(getResources(), R.drawable.dummy));
+                tmphlp.exportPNG(PATH + getFileName(position));
             }
             tmphlp.close();
             return true;
@@ -131,10 +131,13 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
             }
             if (mInstanceState != null && mInstanceState.getBoolean("drawing")
                     && mInstanceState.getInt("page") == position) {
-                addDrawingView(position, mInstanceState.getBundle("vg").getString("bakFile"));
-                mInstanceState = null;
+                mInstanceState = mInstanceState.getBundle("vg");
+                if (mInstanceState != null) {
+                    addDrawingView(position, mInstanceState.getString("bakFile"));
+                    mInstanceState = null;
+                }
             } else if (mViewPager.getCurrentItem() == position) {
-                closeDrawing(hlp, mViewPager.getCurrentItem());
+                closeDrawing(hlp, position);
             }
             container.addView(mViews[position]);
             return mViews[position];
