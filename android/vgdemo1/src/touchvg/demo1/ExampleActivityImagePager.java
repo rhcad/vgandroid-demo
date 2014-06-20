@@ -2,6 +2,7 @@
 
 package touchvg.demo1;
 
+import rhcad.touchvg.IGraphView.OnViewDetachedListener;
 import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.ViewFactory;
 import android.graphics.Bitmap;
@@ -10,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -84,7 +86,12 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
                 tmphlp.saveToFile(PATH + getFileName(position));
                 tmphlp.exportPNG(PATH + getFileName(position));
             }
-            tmphlp.close();
+            tmphlp.close(new OnViewDetachedListener() {
+                @Override
+                public void onGraphViewDetached() {
+                    Log.d("touchvg", "You can show image in onGraphViewDetached");
+                }
+            });
             return true;
         }
 
