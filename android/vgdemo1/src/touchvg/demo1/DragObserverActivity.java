@@ -13,12 +13,13 @@ import rhcad.touchvg.core.MgShape;
 
 // Testing Activity using CmdObserver to change polygon shape's color.
 public class DragObserverActivity extends ExampleActivitySF {
+    private MyCmdObserver mObserver = new MyCmdObserver();
 
     @Override
     public void onFirstRegen(IGraphView view) {
         super.onFirstRegen(view);
         hlp.setCommand("rect");
-        ViewFactory.registerCmdObserver(hlp, new MyCmdObserver());
+        ViewFactory.registerCmdObserver(hlp, mObserver);
     }
 
     private static class MyCmdObserver extends CmdObserverDefault {
