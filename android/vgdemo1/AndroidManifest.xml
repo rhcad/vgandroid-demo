@@ -37,6 +37,10 @@
             android:name=".ExampleActivityImagePager"
             android:label="@string/title_activity_example1" >
         </activity>
+        <activity
+            android:name=".DragObserverActivity"
+            android:label="@string/title_activity_example1" >
+        </activity>
     </application>
 
 </manifest>

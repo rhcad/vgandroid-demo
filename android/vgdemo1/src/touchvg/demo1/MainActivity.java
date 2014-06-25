@@ -11,7 +11,8 @@ import android.widget.ListView;
 
 public class MainActivity extends ListActivity {
     private static final String[] VIEWS = new String[] {
-        "ExampleActivity1", "ExampleActivitySF", "ExampleActivityPager", "ExampleActivityImagePager" };
+        "ExampleActivity1", "ExampleActivitySF", "ExampleActivityPager",
+        "ExampleActivityImagePager", "DragObserverActivity" };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
