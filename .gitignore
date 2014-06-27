@@ -4,7 +4,6 @@
 *.bak*
 *~
 ._*
-*.lock
 *.swp
 *.out
 *.tmp
@@ -13,7 +12,6 @@
 profile
 
 #Xcode files
-#This ignores everything inside a *.xcodeproj except the project.pbxproj
 *.log
 xcuserdata
 xcshareddata
@@ -50,6 +48,5 @@ CppDepend*
 *.ch*
 *.hh*
 *_wrap.cxx
-ios/output
-android/output
+output
 *.so

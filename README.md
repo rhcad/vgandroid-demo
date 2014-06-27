@@ -1,6 +1,6 @@
-# TouchVGTest
+# TouchVG Demo for Android
 
-This is a unit test project for [TouchVG](https://github.com/touchvg/TouchVG), which is a lightweight 2D vector drawing framework for iOS, Android and Windows.
+This is a unit test and example project for [TouchVG](https://github.com/touchvg/vgandroid), which is a lightweight 2D vector drawing framework for Android.
 
 ![arch](http://touchvg.github.io/images/arch.svg)
 
@@ -8,77 +8,68 @@ This is a unit test project for [TouchVG](https://github.com/touchvg/TouchVG), w
 
 This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the following open source projects:
 
-- [TouchVG](https://github.com/touchvg/TouchVG) (LGPL): Vector drawing framework for iOS, Android and Windows.
-- [TouchVGCore](https://github.com/touchvg/TouchVGCore) (LGPL): Cross-platform vector drawing libraries using C++.
-- [SVGKit](https://github.com/SVGKit/SVGKit) (MIT): Display and interact with SVG Images with CoreAnimation on iOS.
+- [TouchVG](https://github.com/touchvg/vgandroid) (LGPL): Vector drawing framework for Android.
+- [TouchVGCore](https://github.com/touchvg/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
 - [DemoCmds](https://github.com/touchvg/DemoCmds): A template and example project containing customized shape and command classes.
 
-# How to Compile
+## How to Compile
 
-## Compile for iOS
+- Enter the directory of this project, then type `./build.sh` to clone and build libraries needed.
 
-- Cd the `ios` folder of this project and type `./build.sh` or `./build.sh -arch arm64` to checkout and build libraries needed.
+  - Need to install the lastest version of [SWIG](http://sourceforge.net/projects/swig/files/), and add the location to PATH on Windows.
+  
+  - Need to add the [NDK](http://developer.android.com/tools/sdk/ndk/index.html) installation location to PATH.
+  
+  - If the error `build/gmsl/__gmsl:512: *** non-numeric second argument to wordlist function` occurs, then open the `build/gmsl/__gmsl` file in the NDK installation directory, and change line 512 to:
+     `int_encode = $(__gmsl_tr1)$(wordlist 1,$(words $1),$(__gmsl_input_int))`
 
-- Open `ios/TestVG.xcworkspace` in Xcode, then run the `TestView` demo app.
-   
-   - `TestView` target using `libTouchVG.a` does not support SVG display.
+   - MSYS is recommended on Windows.
 
-   - `TestView-SVG` target using `libTouchVG-SVG.a` and `SVGKit` can display SVG shapes.
-
-   - To run on device, you may need to change the Bundle Identifier of the demo application, such as "com.yourcompany.TestView", and choose your own development certificate (Code Signing).
-
-## Compile for Android
-
-- Import all projects of this project in eclipse, then run `VGTest` or `vgdemo1` project to view the demonstration.
+- Import all projects (touchvg, democmds, vgdemo1 and VGTest) in eclipse, then run `VGTest` or `vgdemo1` project to view the demonstration.
 
   - Android SDK version of the projects may need to modify according to your installation.
-  - Recommend using the newer [ADT Bundle](http://developer.android.com/sdk/index.html) to avoid complex configuration.
   
-- You can download the [prebuild libraries](https://github.com/touchvg/TouchVGTest/archive/android_prebuild.zip) and extract to `android/test/libs`.
+  - Recommend using the newer [ADT Bundle](http://developer.android.com/sdk/index.html) to avoid complex configuration.
 
--  To regenerate libtouchvg.so and libdemocmds.so, please enter `android` directory of this project, then type `./build.sh`
-(Need to add the [NDK](http://developer.android.com/tools/sdk/ndk/index.html) installation location to your PATH environment variable).
+- Don't want to build libtouchvg.so and jar? Then you can download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip) and extract to `test/libs`.
+
+-  Regenerate libtouchvg.so and JNI classes:
 
    - Type `./build.sh -B` to rebuild the native libraries.
    
-   - Type `./build.sh APP_ABI=x86` or `./build.sh -B APP_ABI=x86` to build for the x86 (Intel Atom) Emulator.
+   - Type `./build.sh APP_ABI=x86` to build for the x86 (Intel Atom) Emulator.
+   
+   - Type `./build.sh -swig` to regenerate the kernel JNI classes.
 
-   - If the error `build/gmsl/__gmsl:512: *** non-numeric second argument to wordlist function` occurs, then open the `build/gmsl/__gmsl` file in the NDK installation directory, and change line 512 to:
-     `int_encode = $(__gmsl_tr1)$(wordlist 1,$(words $1),$(__gmsl_input_int))`
+## How to Debug native code
 
-   - MSYS and TDM-GCC(a MinGW distribution) are recommended on Windows.
-
-   - To regenerate the kernel JNI classes, type `./build.sh-swig`
-(Need to install [SWIG](http://sourceforge.net/projects/swig/files/), and add the location to PATH).
-
-## Compile for Windows
-
-- Open `wpf/Test_cs10.sln` in Visual Studio 2010 (Need VC++ and C#), then run the`WpfDemo` application. Or open `wpf/Test_cs9.sln` in VS2008.
-
-- To regenerate `wpf/touchvglib/core/*.cs`, please enter `wpf` directory and type `./build.sh`
-(Need to install [SWIG](http://sourceforge.net/projects/swig/files/), and add the location to PATH).
-
-## Compile for other platform
-
-- You can compile TouchVG for Python, Perl or Java applications on Linux, MinGW or Mac OS X.
-
-  - Enter `core` directory which contains Makefile, then type the following make command:
-
-     - `Make all install`: compile C + + static library .
-     - `Make java`: Jar package and generate dynamic libraries for Java programs.
-     - `Make python`, `make perl`: namely Python, Perl , etc. to generate class files and dynamic libraries.
-     - `Make clean java.clean python.clean`: delete these temporary files compiled out .
-
-   - MSYS and TDM-GCC(a MinGW distribution) are recommended on Windows.
+  - Add `#include "mglog.h"` and use `LOGD("your message %d", someint)` in the C++ files needed to debug.
+  
+  - Set LogCat filter in Eclipse: `tag:dalvikvm|AndroidRuntime|vgjni|touchvg|vgstack|libc|DEBUG`.
+  
+  - Print JNI functions to locate problems of libc crash:
+    1. Add `python addlog.py` in `TouchVG/jni/build.sh`.
+    2. Type `./build.sh -swig` to add log in all JNI entry functions, or remove `touchvg_java_wrap.cpp` and type `./build.sh`.
  
-# Add more shapes and commands
+## Add more shapes and commands
 
-- Do not want to write C++ code? Please reference to [android/test/src/vgtest/testview/shape](android/test/src/vgtest/testview/shape) package to write your own shapes and commands.
+- Do not want to write C++ code? Please reference to [test/src/vgtest/testview/shape](test/src/vgtest/testview/shape) package to write your own shape and command classes.
 
 - You can create library project containing your own shapes and commands. So the TouchVG and TouchVGCore libraries does not require changes.
 
-  - Checkout and enter [../DemoCmds](https://github.com/touchvg/DemoCmds) directory and type `python newproj.py`.
-    
-  - Need to install python to run the script.
- 
+  - Checkout and enter [DemoCmds](https://github.com/touchvg/DemoCmds) directory, then type `python newproj.py YourCmds`:
+
+     ```shell
+     git clone https://github.com/touchvg/DemoCmds.git
+     cd DemoCmds
+     python newproj.py MyCmds
+     ```
+
 - You can customize the drawing behavior via implement your CmdObserver class (see the example in [DemoCmds](https://github.com/touchvg/DemoCmds) ).
+
+## How to Contribute
+
+Contributors and sponsors are welcome. You may translate, commit issues or pull requests on this Github site.
+To contribute, please follow the branching model outlined here: [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/).
+
+Welcome to the Chinese QQ group `192093613` to discuss and share.
