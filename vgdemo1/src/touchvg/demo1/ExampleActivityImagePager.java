@@ -11,7 +11,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -22,7 +21,7 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
     private ViewPager mViewPager;
     private FrameLayout[] mViews = new FrameLayout[5];
     private int[] mChangeCounts = new int[5];
-    private Bundle mInstanceState;
+    private Bundle mState;
     private Drawable mBackground;
 
     @Override
@@ -51,7 +50,7 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        mInstanceState = savedInstanceState;
+        mState = savedInstanceState;
         mViewPager.setCurrentItem(savedInstanceState.getInt("page"));
         super.onRestoreInstanceState(savedInstanceState);
     }
@@ -76,7 +75,7 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
         return closeDrawing(ViewFactory.createHelper(mViews[position]), position);
     }
 
-    private boolean closeDrawing(IViewHelper tmphlp, int position) {
+    private boolean closeDrawing(IViewHelper tmphlp, final int position) {
         if (tmphlp != null && tmphlp.getView() != null) {
             if (tmphlp != hlp && tmphlp.getView() == hlp.getView()) {
                 hlp.setGraphView(null);
@@ -89,7 +88,14 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
             tmphlp.close(new OnViewDetachedListener() {
                 @Override
                 public void onGraphViewDetached() {
-                    Log.d("touchvg", "You can show image in onGraphViewDetached");
+                    // Called in onDetachedFromWindow, so add the image view in the same parent view later.
+                    // You may reload and show image content immediately in another parent view.
+                    mViews[position].post(new Runnable() {
+                        @Override
+                        public void run() {
+                            addImageView(position);
+                        }
+                    });
                 }
             });
             return true;
@@ -107,7 +113,7 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
     }
 
     private void addDrawingView(int position, String filename) {
-        hlp.createSurfaceAndImageView(this, mViews[position], mInstanceState);
+        hlp.createSurfaceAndImageView(this, mViews[position], mState);
         hlp.setBackgroundDrawable(mBackground);
         //hlp.setZoomEnabled(false);
         hlp.loadFromFile(filename);
@@ -134,17 +140,18 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
             }
             if (mViews[position] == null) {
                 mViews[position] = new FrameLayout(ExampleActivityImagePager.this);
-                addImageView(position);
             }
-            if (mInstanceState != null && mInstanceState.getBoolean("drawing")
-                    && mInstanceState.getInt("page") == position) {
-                mInstanceState = mInstanceState.getBundle("vg");
-                if (mInstanceState != null) {
-                    addDrawingView(position, mInstanceState.getString("bakFile"));
-                    mInstanceState = null;
-                }
-            } else if (mViewPager.getCurrentItem() == position) {
-                closeDrawing(hlp, position);
+
+            final Bundle state = (mState != null && mState.getBoolean("drawing")
+                    && mState.getInt("page") == position) ? mState.getBundle("vg") : null;
+
+            if (state != null) {
+                mState = state;
+                addDrawingView(position, mState.getString("bakFile"));
+                mState = null;
+            } else if (mViewPager.getCurrentItem() != position
+                    || !closeDrawing(hlp, position)) {
+                addImageView(position);
             }
             container.addView(mViews[position]);
             return mViews[position];
