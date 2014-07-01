@@ -19,6 +19,9 @@ public class ViewFactory {
         public String title;
 
         public DummyItem(String id, int flags, String title) {
+            if ((flags & TestFlags.HITTEST_CMD) != 0) {
+                flags |= TestFlags.RAND_SHAPES;
+            }
             this.id = id;
             this.flags = flags;
             this.title = title;
