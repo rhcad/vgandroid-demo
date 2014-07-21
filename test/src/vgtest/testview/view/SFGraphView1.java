@@ -3,6 +3,8 @@
 package vgtest.testview.view;
 
 import rhcad.touchvg.IGraphView;
+import rhcad.touchvg.IGraphView.OnDrawGestureListener;
+import rhcad.touchvg.IGraphView.OnFirstRegenListener;
 import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.ViewFactory;
 import rhcad.touchvg.view.SFGraphView;
@@ -11,12 +13,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import democmds.core.DemoCmdsGate;
 
-public class SFGraphView1 extends SFGraphView implements IGraphView.OnFirstRegenListener {
+public class SFGraphView1 extends SFGraphView implements OnFirstRegenListener, OnDrawGestureListener {
     protected static final String PATH = "mnt/sdcard/TouchVG/";
 
     static {
@@ -37,6 +38,9 @@ public class SFGraphView1 extends SFGraphView implements IGraphView.OnFirstRegen
                 && (flags & (TestFlags.RECORD | TestFlags.RAND_SHAPES)) != 0) {
             setOnFirstRegenListener(this);
         }
+        if ((flags & TestFlags.SWITCH_CMD) != 0) {
+            setOnGestureListener(this);
+        }
 
         flags = flags & TestFlags.CMD_MASK;
         if (flags == TestFlags.SELECT_CMD) {
@@ -51,7 +55,6 @@ public class SFGraphView1 extends SFGraphView implements IGraphView.OnFirstRegen
             int n = DemoCmdsGate.registerCmds(helper.cmdViewHandle());
             helper.setCommand("hittest");
             Log.d("Test", "DemoCmdsGate.registerCmds = " + n + ", " + helper.getCommand());
-
         }
     }
 
@@ -66,18 +69,22 @@ public class SFGraphView1 extends SFGraphView implements IGraphView.OnFirstRegen
         }
     }
 
-    @Override
-    public boolean onPreDoubleTap(MotionEvent e) {
-        int flags = ((Activity) getContext()).getIntent().getExtras().getInt("flags");
-        final IViewHelper helper = ViewFactory.createHelper(this);
+    public boolean onPreGesture(int gestureType, float x, float y) {
+        if (gestureType == IGraphView.kGestureDblTap) {
+            int flags = ((Activity) getContext()).getIntent().getExtras().getInt("flags");
+            final IViewHelper helper = ViewFactory.createHelper(this);
 
-        if ((flags & TestFlags.SWITCH_CMD) != 0) {
-            helper.switchCommand();
-            Toast.makeText(getContext(), helper.getCommand(), Toast.LENGTH_SHORT).show();
-            return true;
+            if ((flags & TestFlags.SWITCH_CMD) != 0) {
+                helper.switchCommand();
+                Toast.makeText(getContext(), helper.getCommand(), Toast.LENGTH_SHORT).show();
+                return true;
+            }
         }
 
         return false;
+    }
+
+    public void onPostGesture(int gestureType, float x, float y) {
     }
 
     public void onFirstRegen(IGraphView view) {
