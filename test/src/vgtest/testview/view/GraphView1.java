@@ -3,8 +3,6 @@
 package vgtest.testview.view;
 
 import rhcad.touchvg.IGraphView;
-import rhcad.touchvg.IGraphView.OnDrawGestureListener;
-import rhcad.touchvg.IGraphView.OnFirstRegenListener;
 import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.ViewFactory;
 import rhcad.touchvg.view.StdGraphView;
@@ -16,7 +14,7 @@ import android.util.Log;
 import android.widget.Toast;
 import democmds.core.DemoCmdsGate;
 
-public class GraphView1 extends StdGraphView implements OnFirstRegenListener, OnDrawGestureListener {
+public class GraphView1 extends StdGraphView {
     protected static final String PATH = "mnt/sdcard/TouchVG/";
 
     static {
@@ -30,59 +28,50 @@ public class GraphView1 extends StdGraphView implements OnFirstRegenListener, On
     public GraphView1(Context context, Bundle savedInstanceState) {
         super(context, savedInstanceState);
 
-        int flags = ((Activity) context).getIntent().getExtras().getInt("flags");
+        final int flags = ((Activity) context).getIntent().getExtras().getInt("flags");
         final IViewHelper helper = ViewFactory.createHelper(this);
 
         if ((flags & TestFlags.RAND_SHAPES) != 0) {
             helper.addShapesForTest();
         }
         if (savedInstanceState == null && (flags & TestFlags.RECORD) != 0) {
-            setOnFirstRegenListener(this);
+            setOnFirstRegenListener(new IGraphView.OnFirstRegenListener() {
+                public void onFirstRegen(IGraphView view) {
+                    helper.startRecord(PATH + "record");
+                }
+            });
         }
         if ((flags & TestFlags.SWITCH_CMD) != 0) {
-            setOnGestureListener(this);
+            setOnGestureListener(new IGraphView.OnDrawGestureListener() {
+                public boolean onPreGesture(int gestureType, float x, float y) {
+                    helper.switchCommand();
+                    Toast.makeText(getContext(), helper.getCommand(), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+
+                public void onPostGesture(int gestureType, float x, float y) {
+                }
+            });
         }
 
-        flags = flags & TestFlags.CMD_MASK;
-        if (flags == TestFlags.SELECT_CMD) {
+        switch (flags & TestFlags.CMD_MASK) {
+        case TestFlags.SELECT_CMD:
             helper.setCommand("select");
-        } else if (flags == TestFlags.SPLINES_CMD) {
+            break;
+        case TestFlags.SPLINES_CMD:
             helper.setCommand("splines");
-        } else if (flags == TestFlags.LINE_CMD) {
+            break;
+        case TestFlags.LINE_CMD:
             helper.setCommand("line");
-        } else if (flags == TestFlags.LINES_CMD) {
+            break;
+        case TestFlags.LINES_CMD:
             helper.setCommand("lines");
-        } else if (flags == TestFlags.HITTEST_CMD) {
+            break;
+        case TestFlags.HITTEST_CMD:
             int n = DemoCmdsGate.registerCmds(helper.cmdViewHandle());
             helper.setCommand("hittest");
             Log.d("Test", "DemoCmdsGate.registerCmds = " + n + ", " + helper.getCommand());
-        }
-    }
-
-    public boolean onPreGesture(int gestureType, float x, float y) {
-        if (gestureType == IGraphView.kGestureDblTap) {
-            int flags = ((Activity) getContext()).getIntent().getExtras().getInt("flags");
-            final IViewHelper helper = ViewFactory.createHelper(this);
-
-            if ((flags & TestFlags.SWITCH_CMD) != 0) {
-                helper.switchCommand();
-                Toast.makeText(getContext(), helper.getCommand(), Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public void onPostGesture(int gestureType, float x, float y) {
-    }
-
-    public void onFirstRegen(IGraphView view) {
-        int flags = ((Activity) getContext()).getIntent().getExtras().getInt("flags");
-        final IViewHelper helper = ViewFactory.createHelper(view);
-
-        if ((flags & TestFlags.RECORD) != 0) {
-            helper.startRecord(PATH + "record");
+            break;
         }
     }
 }
