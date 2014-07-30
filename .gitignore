@@ -47,6 +47,5 @@ CppDepend*
 *.cdproj
 *.ch*
 *.hh*
-*_wrap.cxx
 output
 *.so

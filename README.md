@@ -15,23 +15,19 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
 ## How to Compile
 
 - Enter the directory of this project, then type `./build.sh` to clone and build libraries needed.
-
-  - Need to install the lastest version of [SWIG](http://sourceforge.net/projects/swig/files/) 3.0, and add the location to PATH on Windows. SWIG 2.x may can't parse UTF-8 header files on Windows.
   
   - Need to add the [NDK](http://developer.android.com/tools/sdk/ndk/index.html) installation location to PATH.
   
   - If the error `build/gmsl/__gmsl:512: *** non-numeric second argument to wordlist function` occurs, then open the `build/gmsl/__gmsl` file in the NDK installation directory, and change line 512 to:
      `int_encode = $(__gmsl_tr1)$(wordlist 1,$(words $1),$(__gmsl_input_int))`
 
-   - MSYS is recommended on Windows.
+   - MSYS is recommended on Windows to run UNIX commands.
 
 - Import all projects (touchvg, democmds, vgdemo1 and VGTest) in eclipse, then run `VGTest` or `vgdemo1` project to view the demonstration.
 
   - Android SDK version of the projects may need to modify according to your installation.
   
   - Recommend using the newer [ADT Bundle](http://developer.android.com/sdk/index.html) to avoid complex configuration.
-
-- Don't want to build libtouchvg.so and jar? Then you can download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip) and extract to `test/libs`.
 
 -  Regenerate libtouchvg.so and JNI classes:
 
@@ -40,6 +36,10 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
    - Type `./build.sh APP_ABI=x86` to build for the x86 (Intel Atom) Emulator.
    
    - Type `./build.sh -swig` to regenerate the kernel JNI classes.
+   
+   - Need to install the lastest version of [SWIG](http://sourceforge.net/projects/swig/files/) 3.0, and add the location to PATH on Windows. SWIG 2.x may can't parse UTF-8 header files on Windows.
+
+- Don't want to build libtouchvg.so and jar? Then you can download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip) and extract to `test/libs`.
 
 ## How to Debug native code
 
