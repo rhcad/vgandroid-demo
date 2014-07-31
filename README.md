@@ -8,9 +8,10 @@ This is a unit test and example project for [TouchVG](https://github.com/touchvg
 
 - Don't want to build libtouchvg.so and libdemocmds.so ?
 
-  1. Download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip).
-  2. Extract `touchvg_libs` in the zip package to `vgandroid/TouchVG/libs`.
-  3. Extract `democmds_libs` in the zip package to `DemoCmds/android/DemoCmds/libs`.
+  - Download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip).
+  - Extract `touchvg_libs` in the zip package to `vgandroid/TouchVG/libs`.
+  - Extract `democmds_libs` in the zip package to `DemoCmds/android/DemoCmds/libs`.
+  - Import all projects (touchvg, democmds, vgdemo1 and VGTest) in eclipse. Android SDK version in the projects may need to modify according to your installation.
 
 - Enter the directory of this project, then type `./build.sh` to clone and build libraries needed.
   
@@ -19,7 +20,7 @@ This is a unit test and example project for [TouchVG](https://github.com/touchvg
   - If the error `build/gmsl/__gmsl:512: *** non-numeric second argument to wordlist function` occurs, then open the `build/gmsl/__gmsl` file in the NDK installation directory, and change line 512 to:
      `int_encode = $(__gmsl_tr1)$(wordlist 1,$(words $1),$(__gmsl_input_int))`
 
-   - MSYS is recommended on Windows to run UNIX commands.
+   - [MSYS](http://www.mingw.org/wiki/msys) is recommended on Windows to run UNIX commands such as rm, sh and make. MinGW and Cygwin are not necessary for TouchVG.
 
 - Import all projects (touchvg, democmds, vgdemo1 and VGTest) in eclipse, then run `VGTest` or `vgdemo1` project to view the demonstration.
 
