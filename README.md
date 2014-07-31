@@ -4,15 +4,13 @@ This is a unit test and example project for [TouchVG](https://github.com/touchvg
 
 ![arch](http://touchvg.github.io/images/arch.svg)
 
-## License
-
-This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the following open source projects:
-
-- [TouchVG](https://github.com/touchvg/vgandroid) (LGPL): Vector drawing framework for Android.
-- [TouchVGCore](https://github.com/touchvg/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
-- [DemoCmds](https://github.com/touchvg/DemoCmds): A template and example project containing customized shape and command classes.
-
 ## How to Compile
+
+- Don't want to build libtouchvg.so and libdemocmds.so ?
+
+  1. Download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip).
+  2. Extract `touchvg_libs` in the zip package to `vgandroid/TouchVG/libs`.
+  3. Extract `democmds_libs` in the zip package to `DemoCmds/android/DemoCmds/libs`.
 
 - Enter the directory of this project, then type `./build.sh` to clone and build libraries needed.
   
@@ -39,8 +37,6 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
    
    - Need to install the lastest version of [SWIG](http://sourceforge.net/projects/swig/files/) 3.0, and add the location to PATH on Windows. SWIG 2.x may can't parse UTF-8 header files on Windows.
 
-- Don't want to build libtouchvg.so and jar? Then you can download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip) and extract to `test/libs`.
-
 ## How to Debug native code
 
   - Add `#include "mglog.h"` and use `LOGD("your message %d", someint)` in the C++ files needed to debug.
@@ -66,6 +62,14 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
      ```
 
 - You can customize the drawing behavior via implement your CmdObserver class (see the example in [DemoCmds](https://github.com/touchvg/DemoCmds) ).
+
+## License
+
+This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the following open source projects:
+
+- [TouchVG](https://github.com/touchvg/vgandroid) (LGPL): Vector drawing framework for Android.
+- [TouchVGCore](https://github.com/touchvg/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
+- [DemoCmds](https://github.com/touchvg/DemoCmds): A template and example project containing customized shape and command classes.
 
 ## How to Contribute
 
