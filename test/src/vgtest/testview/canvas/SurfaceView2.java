@@ -7,6 +7,7 @@ package vgtest.testview.canvas;
 import rhcad.touchvg.core.TestCanvas;
 import rhcad.touchvg.view.CanvasAdapter;
 import vgtest.app.R;
+import vgtest.testview.TestFlags;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -119,7 +120,7 @@ public class SurfaceView2 extends SurfaceView {
                 if (canvas != null) {
                     if (mCanvas.beginPaint(canvas)) {
                         canvas.drawColor(Color.TRANSPARENT, Mode.CLEAR);
-                        if ((mCreateFlags & 0xF0000) != 0) { // in scroll view
+                        if ((mCreateFlags & TestFlags.INSCROLLVIEW) != 0) {
                             TestCanvas.test(mCanvas, mCreateFlags, 400);
                         } else {
                             TestCanvas.test(mCanvas, mCreateFlags);

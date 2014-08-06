@@ -1,6 +1,7 @@
 package vgtest.testview;
 
 public class TestFlags {
+    // see SFGraphView1 or StdGraphView1
     public static final int SPLINES_CMD = 1;
     public static final int SELECT_CMD = 2;
     public static final int LINE_CMD = 4;
@@ -23,8 +24,16 @@ public class TestFlags {
     public static final int OPAQUE_VIEW = 0x1000;
     public static final int LARGE_VIEW = 0x10000;
     public static final int LARGE_SURFACEVIEW = 0x20000;
+    public static final int INSCROLLVIEW = 0xF0000;
 
+    // see TestDoubleViews
     public static final int MODEL_SURFACE = 0x100000;
+    public static final int MAIN_SFVIEW = 0x01;
+    public static final int MAIN_MODELSFVIEW = MAIN_SFVIEW | MODEL_SURFACE;
+    public static final int MAIN_STDVIEW = 0x02;
+    public static final int MAIN_CACHEDVIEW = 0x04;
+    public static final int DYN_STDVIEW = 0x10;
+    public static final int DYN_SFVIEW = 0x20;
 
     private TestFlags() {
     }

@@ -5,6 +5,7 @@
 package vgtest.testview.canvas;
 
 import rhcad.touchvg.core.TestCanvas;
+import vgtest.testview.TestFlags;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -34,13 +35,13 @@ public class LargeView1 extends ScrollView {
         final int flags = ((Activity) context).getIntent().getExtras().getInt("flags");
         View view = null;
 
-        if ((flags & 0x10000) != 0) { // in scroll view
+        if ((flags & TestFlags.LARGE_VIEW) != 0) {
             if ((flags & TestCanvas.kDynCurves) != 0) {
                 view = new GraphView2(context);
             } else {
                 view = new GraphView1(context);
             }
-        } else if ((flags & 0x20000) != 0) { // uses surface view
+        } else if ((flags & TestFlags.LARGE_SURFACEVIEW) != 0) {
             if ((flags & TestCanvas.kDynCurves) != 0) {
                 view = new SurfaceView3(context);
             } else {

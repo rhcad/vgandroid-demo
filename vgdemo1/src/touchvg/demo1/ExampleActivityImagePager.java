@@ -23,6 +23,9 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
     private int[] mChangeCounts = new int[5];
     private Bundle mState;
     private Drawable mBackground;
+    private static final String VGEXT = ".vg";
+    private static final String KEY_PAGE = "page";
+    private static final String KEY_DRAWING = "drawing";
 
     @Override
     protected void createGraphView(Bundle savedInstanceState) {
@@ -33,25 +36,25 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
     }
 
     private String getFileName(int position) {
-        return position + ".vg";
+        return position + VGEXT;
     }
 
     @Override
     protected String getFileName() {
-        return (mViewPager != null ? mViewPager.getCurrentItem() : 0) + ".vg";
+        return (mViewPager != null ? mViewPager.getCurrentItem() : 0) + VGEXT;
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("page", mViewPager.getCurrentItem());
-        outState.putBoolean("drawing", hlp.getView() != null);
+        outState.putInt(KEY_PAGE, mViewPager.getCurrentItem());
+        outState.putBoolean(KEY_DRAWING, hlp.getView() != null);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         mState = savedInstanceState;
-        mViewPager.setCurrentItem(savedInstanceState.getInt("page"));
+        mViewPager.setCurrentItem(savedInstanceState.getInt(KEY_PAGE));
         super.onRestoreInstanceState(savedInstanceState);
     }
 
@@ -115,7 +118,6 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
     private void addDrawingView(int position, String filename) {
         hlp.createSurfaceAndImageView(this, mViews[position], mState);
         hlp.setBackgroundDrawable(mBackground);
-        //hlp.setZoomEnabled(false);
         hlp.loadFromFile(filename);
         mChangeCounts[position] = hlp.getChangeCount();
         afterViewCreated(hlp);
@@ -142,8 +144,8 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
                 mViews[position] = new FrameLayout(ExampleActivityImagePager.this);
             }
 
-            final Bundle state = (mState != null && mState.getBoolean("drawing")
-                    && mState.getInt("page") == position) ? mState.getBundle("vg") : null;
+            final Bundle state = (mState != null && mState.getBoolean(KEY_DRAWING)
+                    && mState.getInt(KEY_PAGE) == position) ? mState.getBundle("vg") : null;
 
             if (state != null) {
                 mState = state;

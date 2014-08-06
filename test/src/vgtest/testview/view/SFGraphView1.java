@@ -18,6 +18,7 @@ import democmds.core.DemoCmdsGate;
 
 public class SFGraphView1 extends SFGraphView {
     protected static final String PATH = "mnt/sdcard/TouchVG/";
+    protected int mFlags;
 
     static {
         System.loadLibrary("democmds");
@@ -29,25 +30,35 @@ public class SFGraphView1 extends SFGraphView {
 
     public SFGraphView1(Context context, Bundle savedInstanceState) {
         super(context, savedInstanceState);
+        mFlags = ((Activity) context).getIntent().getExtras().getInt("flags");
 
-        final int flags = ((Activity) context).getIntent().getExtras().getInt("flags");
         final IViewHelper helper = ViewFactory.createHelper(this);
 
-        if (savedInstanceState == null
-                && (flags & (TestFlags.RECORD | TestFlags.RAND_SHAPES)) != 0) {
+        if (savedInstanceState == null) {
+            registerFirstRegen(helper);
+        }
+        registerGestureListener(helper);
+        startTestCommand(helper);
+    }
+
+    private void registerFirstRegen(final IViewHelper helper) {
+        if ((mFlags & (TestFlags.RECORD | TestFlags.RAND_SHAPES)) != 0) {
             setOnFirstRegenListener(new IGraphView.OnFirstRegenListener() {
 
                 public void onFirstRegen(IGraphView view) {
-                    if ((flags & TestFlags.RAND_SHAPES) != 0) {
+                    if ((mFlags & TestFlags.RAND_SHAPES) != 0) {
                         helper.addShapesForTest();
                     }
-                    if ((flags & TestFlags.RECORD) != 0) {
+                    if ((mFlags & TestFlags.RECORD) != 0) {
                         helper.startRecord(PATH + "record");
                     }
                 }
             });
         }
-        if ((flags & TestFlags.SWITCH_CMD) != 0) {
+    }
+
+    private void registerGestureListener(final IViewHelper helper) {
+        if ((mFlags & TestFlags.SWITCH_CMD) != 0) {
             setOnGestureListener(new IGraphView.OnDrawGestureListener() {
 
                 public boolean onPreGesture(int gestureType, float x, float y) {
@@ -64,8 +75,10 @@ public class SFGraphView1 extends SFGraphView {
                 }
             });
         }
+    }
 
-        switch (flags & TestFlags.CMD_MASK) {
+    private void startTestCommand(final IViewHelper helper) {
+        switch (mFlags & TestFlags.CMD_MASK) {
         case TestFlags.SELECT_CMD:
             helper.setCommand("select");
             break;
@@ -83,6 +96,8 @@ public class SFGraphView1 extends SFGraphView {
             helper.setCommand("hittest");
             Log.d("Test", "DemoCmdsGate.registerCmds = " + n + ", " + helper.getCommand());
             break;
+        default:
+            break;
         }
     }
 
@@ -90,8 +105,7 @@ public class SFGraphView1 extends SFGraphView {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
 
-        final int flags = ((Activity) getContext()).getIntent().getExtras().getInt("flags");
-        if ((flags & TestFlags.HAS_BACKDRAWABLE) != 0) {
+        if ((mFlags & TestFlags.HAS_BACKDRAWABLE) != 0) {
             ViewGroup layout = (ViewGroup) getParent();
             this.setBackgroundDrawable(layout.getBackground());
         }

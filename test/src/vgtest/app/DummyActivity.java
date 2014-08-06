@@ -79,8 +79,9 @@ public class DummyActivity extends Activity {
         int orientation = this.getResources().getConfiguration().orientation;
 
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-        }
-        else if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Log.d(TAG, "ORIENTATION_LANDSCAPE");
+        } else if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Log.d(TAG, "ORIENTATION_PORTRAIT");
         }
     }
 

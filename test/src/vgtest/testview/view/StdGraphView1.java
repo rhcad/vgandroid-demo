@@ -43,6 +43,11 @@ public class StdGraphView1 extends StdGraphView {
                 }
             });
         }
+        registerGestureListener(helper, flags);
+        startTestCommand(helper, flags);
+    }
+
+    private void registerGestureListener(final IViewHelper helper, int flags) {
         if ((flags & TestFlags.SWITCH_CMD) != 0) {
             setOnGestureListener(new IGraphView.OnDrawGestureListener() {
 
@@ -60,7 +65,9 @@ public class StdGraphView1 extends StdGraphView {
                 }
             });
         }
+    }
 
+    private void startTestCommand(final IViewHelper helper, int flags) {
         switch (flags & TestFlags.CMD_MASK) {
         case TestFlags.SELECT_CMD:
             helper.setCommand("select");
@@ -78,6 +85,8 @@ public class StdGraphView1 extends StdGraphView {
             int n = DemoCmdsGate.registerCmds(helper.cmdViewHandle());
             helper.setCommand("hittest");
             Log.d("Test", "DemoCmdsGate.registerCmds = " + n + ", " + helper.getCommand());
+            break;
+        default:
             break;
         }
     }

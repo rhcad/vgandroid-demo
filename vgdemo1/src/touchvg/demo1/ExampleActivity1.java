@@ -40,7 +40,7 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
     }
 
     protected void afterViewCreated(IViewHelper hlp) {
-        hlp.setCommand("splines");
+        hlp.setCommand("@draw");
         hlp.setStrokeWidth(5);
     }
 
@@ -89,43 +89,53 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
         hlp.startUndoRecord(PATH + "undo");
     }
 
+    private void initCommandButton(int id, final String name) {
+        this.findViewById(id).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hlp.setCommand(name);
+            }
+        });
+    }
+
+    private void initColorButton(int id, final int argb) {
+        this.findViewById(id).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hlp.setLineColor(argb);
+            }
+        });
+    }
+
     protected void initButtons() {
-        this.findViewById(R.id.selectBtn).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hlp.setCommand("select");
-            }
-        });
-        this.findViewById(R.id.splinesBtn).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hlp.setCommand("splines");
-            }
-        });
-        this.findViewById(R.id.lineBtn).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hlp.setCommand("line");
-            }
-        });
-        this.findViewById(R.id.redPen).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hlp.setLineColor(Color.RED);
-            }
-        });
-        this.findViewById(R.id.bluePen).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hlp.setLineColor(Color.BLUE);
-            }
-        });
+        initCommandButton(R.id.selectBtn, "select");
+        initCommandButton(R.id.splinesBtn, "splines");
+        initCommandButton(R.id.lineBtn, "line");
+        initColorButton(R.id.redPen, Color.RED);
+        initColorButton(R.id.bluePen, Color.BLUE);
+        initRedoSaveButton();
+
         this.findViewById(R.id.lineStyleBtn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 hlp.setLineStyle((hlp.getLineStyle() + 1) % Const.MAX_LINESTYLE);
             }
         });
+        this.findViewById(R.id.addSVGFile).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lockShape(hlp.insertSVGFromResource(R.raw.text));
+            }
+        });
+        this.findViewById(R.id.lockGesture).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchGestureEnabled();
+            }
+        });
+    }
+
+    private void initRedoSaveButton() {
         this.findViewById(R.id.saveBtn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,12 +148,6 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
                 hlp.loadFromFile(PATH + VGFILE);
             }
         });
-        this.findViewById(R.id.addSVGFile).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lockShape(hlp.insertSVGFromResource(R.raw.text));
-            }
-        });
         this.findViewById(R.id.undoBtn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,12 +158,6 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
             @Override
             public void onClick(View v) {
                 hlp.redo();
-            }
-        });
-        this.findViewById(R.id.lockGesture).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchGestureEnabled();
             }
         });
     }

@@ -3,6 +3,7 @@
 package touchvg.demo1;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import rhcad.touchvg.IGraphView;
 import rhcad.touchvg.IViewHelper;
@@ -18,7 +19,7 @@ import android.view.ViewGroup;
 public class ExampleActivityPager extends ExampleActivity1 {
     private static final String VGEXT = ".vg";
     private ViewPager viewPager;
-    private ArrayList<IGraphView> views = new ArrayList<IGraphView>();
+    private List<IGraphView> views = new ArrayList<IGraphView>();
 
     @Override
     protected void createGraphView(Bundle savedInstanceState) {

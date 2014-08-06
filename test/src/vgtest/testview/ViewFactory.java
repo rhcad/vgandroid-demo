@@ -14,9 +14,9 @@ public class ViewFactory {
 
     public static class DummyItem {
 
-        public String id;
-        public int flags;
-        public String title;
+        private String id;
+        private int flags;
+        private String title;
 
         public DummyItem(String id, int flags, String title) {
             boolean hittest = (flags & TestFlags.HITTEST_CMD) != 0;
@@ -29,9 +29,17 @@ public class ViewFactory {
         public String toString() {
             return title;
         }
+
+        public int getFlags() {
+            return flags;
+        }
+
+        public String getId() {
+            return id;
+        }
     }
 
-    public static List<DummyItem> ITEMS = new ArrayList<DummyItem>();
+    private static final List<DummyItem> ITEMS = new ArrayList<DummyItem>();
     private static final String SFGRAPHVIEW1 = "vgtest.testview.view.SFGraphView1";
     private static final String GRAPHVIEW1 = "vgtest.testview.view.StdGraphView1";
     private static final String MAGNIFIER1 = "vgtest.testview.view.TestMagnifier1";
@@ -52,6 +60,13 @@ public class ViewFactory {
         testTwoLayerViews();
         testCanvasViews();
         testLargeView3();
+    }
+
+    private ViewFactory() {
+    }
+
+    public static final List<DummyItem> items() {
+        return ITEMS;
     }
 
     static void testShapeViews() {
@@ -110,30 +125,45 @@ public class ViewFactory {
 
     static void testTwoLayerViews() {
         addItem("vgtest.testview.view.GraphView", 0, "TestOneView");
-        addItem(DBLVIEWS, 1 | 0, "TestOneSurfaceView");
-        addItem(DBLVIEWS, 1 | 0 | TestFlags.MODEL_SURFACE, "TestOneSurfaceView, back");
+        addItem(DBLVIEWS, TestFlags.MAIN_SFVIEW, "TestOneSurfaceView");
+        addItem(DBLVIEWS, TestFlags.MAIN_MODELSFVIEW, "TestOneSurfaceView, back");
         addItem("vgtest.testview.view.GraphViewCached", 0, "GraphViewCached");
 
-        addItem(DBLVIEWS, 0 | 2, "Test2Views, std view+view");
-        addItem(DBLVIEWS, 1 | 2, "Test2Views, top surface+view");
-        addItem(DBLVIEWS, 0 | 4, "Test2Views, std view+surface");
-        addItem(DBLVIEWS, 1 | 4, "Test2Views, top surface+surface");
-        addItem(DBLVIEWS, 1 | 2 | TestFlags.MODEL_SURFACE, "Test2Views, back surface+view");
-        addItem(DBLVIEWS, 1 | 4 | TestFlags.MODEL_SURFACE, "Test2Views, back surface+surface");
-        addItem(DBLVIEWS, 8 | 4, "Test2Views, cachedview+surface");
-        addItem(DBLVIEWS, 8 | 2, "Test2Views, cachedview+view");
+        addItem(DBLVIEWS, TestFlags.MAIN_STDVIEW | TestFlags.DYN_STDVIEW,
+                "Test2Views, std view+view");
+        addItem(DBLVIEWS, TestFlags.MAIN_SFVIEW | TestFlags.DYN_STDVIEW,
+                "Test2Views, top surface+view");
+        addItem(DBLVIEWS, TestFlags.MAIN_STDVIEW | TestFlags.DYN_SFVIEW,
+                "Test2Views, std view+surface");
+        addItem(DBLVIEWS, TestFlags.MAIN_SFVIEW | TestFlags.DYN_SFVIEW,
+                "Test2Views, top surface+surface");
+        addItem(DBLVIEWS, TestFlags.MAIN_MODELSFVIEW | TestFlags.DYN_STDVIEW,
+                "Test2Views, back surface+view");
+        addItem(DBLVIEWS, TestFlags.MAIN_MODELSFVIEW | TestFlags.DYN_SFVIEW,
+                "Test2Views, back surface+surface");
+        addItem(DBLVIEWS, TestFlags.MAIN_CACHEDVIEW | TestFlags.DYN_SFVIEW,
+                "Test2Views, cachedview+surface");
+        addItem(DBLVIEWS, TestFlags.MAIN_CACHEDVIEW | TestFlags.DYN_STDVIEW,
+                "Test2Views, cachedview+view");
 
-        addItem(LARGEVIEW2, 0 | 2, "Test2Views, scroll view+view");
-        addItem(LARGEVIEW2, 1 | 2, "Test2Views, scroll surface+view");
-        addItem(LARGEVIEW2, 0 | 4, "Test2Views, scroll view+surface");
-        addItem(LARGEVIEW2, 1 | 4, "Test2Views, scroll surface+surface");
-        addItem(LARGEVIEW2, 0 | 0, "TestOneView, scroll");
-        addItem(LARGEVIEW2, 1 | 0, "TestOneSurfaceView, scroll");
-        addItem(DBLVIEWS, 1 | 2 | TestFlags.MODEL_SURFACE, "Test2Views, scroll back surface+view");
-        addItem(DBLVIEWS, 1 | 4 | TestFlags.MODEL_SURFACE,
+        addItem(LARGEVIEW2, TestFlags.MAIN_STDVIEW | TestFlags.DYN_STDVIEW,
+                "Test2Views, scroll view+view");
+        addItem(LARGEVIEW2, TestFlags.MAIN_SFVIEW | TestFlags.DYN_STDVIEW,
+                "Test2Views, scroll surface+view");
+        addItem(LARGEVIEW2, TestFlags.MAIN_STDVIEW | TestFlags.DYN_SFVIEW,
+                "Test2Views, scroll view+surface");
+        addItem(LARGEVIEW2, TestFlags.MAIN_SFVIEW | TestFlags.DYN_SFVIEW,
+                "Test2Views, scroll surface+surface");
+        addItem(LARGEVIEW2, TestFlags.MAIN_STDVIEW, "TestOneView, scroll");
+        addItem(LARGEVIEW2, TestFlags.MAIN_SFVIEW, "TestOneSurfaceView, scroll");
+        addItem(DBLVIEWS, TestFlags.MAIN_MODELSFVIEW | TestFlags.DYN_STDVIEW,
+                "Test2Views, scroll back surface+view");
+        addItem(DBLVIEWS, TestFlags.MAIN_MODELSFVIEW | TestFlags.DYN_SFVIEW,
                 "Test2Views, scroll back surface+surface");
-        addItem(LARGEVIEW2, 8 | 4, "Test2Views, scroll cachedview+surface");
-        addItem(LARGEVIEW2, 8 | 2, "Test2Views, scroll cachedview+surface");
+        addItem(LARGEVIEW2, TestFlags.MAIN_CACHEDVIEW | TestFlags.DYN_SFVIEW,
+                "Test2Views, scroll cachedview+surface");
+        addItem(LARGEVIEW2, TestFlags.MAIN_CACHEDVIEW | TestFlags.DYN_STDVIEW,
+                "Test2Views, scroll cachedview+view");
     }
 
     static void testCanvasViews() {

@@ -54,11 +54,11 @@ public class GraphViewCached extends View {
                 }
                 return true;
             }
-
-            private void onGesture(GiGestureType type, GiGestureState state, MotionEvent event) {
-                mCoreView.onGesture(mViewAdapter, type, state, event.getX(), event.getY());
-            }
         });
+    }
+
+    private void onGesture(GiGestureType type, GiGestureState state, MotionEvent event) {
+        mCoreView.onGesture(mViewAdapter, type, state, event.getX(), event.getY());
     }
 
     public GiCoreView coreView() {
@@ -83,7 +83,7 @@ public class GraphViewCached extends View {
         if (pos >= 0) {
             title = title.substring(0, pos);
         }
-        String dyntext = mDynDrawView != null ? (mDynDrawView.getDrawnTime() + "/") : "";
+        String dyntext = mDynDrawView != null ? mDynDrawView.getDrawnTime() + "/" : "";
         activity.setTitle(title + " - " + dyntext + mDrawnTime + " ms");
     }
 
