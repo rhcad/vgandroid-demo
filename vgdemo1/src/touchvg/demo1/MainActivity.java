@@ -5,11 +5,13 @@ package touchvg.demo1;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class MainActivity extends ListActivity {
+    private static final String TAG = "vgdemo";
     private static final String[] VIEWS = new String[] {
         "ExampleActivity1", "ExampleActivitySF", "ExampleActivityPager",
         "ExampleActivityImagePager", "DragObserverActivity" };
@@ -33,7 +35,7 @@ public class MainActivity extends ListActivity {
             Intent i = new Intent(this, cls);
             startActivity(i);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.d(TAG, "onListItemClick", e);
         }
     }
 }

@@ -12,11 +12,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff.Mode;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 //! 基于SurfaceView的动态绘图视图类
 public class DynDrawSfView extends SurfaceView implements DynDrawView {
+    private static final String TAG = "vgtest";
     private CanvasAdapter mCanvasAdapter;
     private GiView mViewAdapter;
     private GiCoreView mCoreView;
@@ -83,9 +85,11 @@ public class DynDrawSfView extends SurfaceView implements DynDrawView {
         }
 
         public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+            Log.d(TAG, "surfaceChanged");
         }
 
         public void surfaceDestroyed(SurfaceHolder holder) {
+            Log.d(TAG, "surfaceDestroyed");
         }
     }
 
@@ -99,7 +103,7 @@ public class DynDrawSfView extends SurfaceView implements DynDrawView {
                     draw(canvas);
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.d(TAG, "DrawThread", e);
             } finally {
                 if (canvas != null) {
                     getHolder().unlockCanvasAndPost(canvas);

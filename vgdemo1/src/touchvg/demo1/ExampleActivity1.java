@@ -2,6 +2,7 @@
 
 package touchvg.demo1;
 
+import rhcad.touchvg.Const;
 import rhcad.touchvg.IGraphView;
 import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.ViewFactory;
@@ -21,6 +22,7 @@ import android.view.ViewGroup;
 public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRegenListener {
     protected IViewHelper hlp = ViewFactory.createHelper();
     protected static final String PATH = "mnt/sdcard/TouchVG/";
+    private static final String VGFILE = "demo.vg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
     }
 
     protected String getFileName() {
-        return "demo.vg";
+        return VGFILE;
     }
 
     @Override
@@ -121,19 +123,19 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
         this.findViewById(R.id.lineStyleBtn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                hlp.setLineStyle((hlp.getLineStyle() + 1) % IViewHelper.MAX_LINESTYLE);
+                hlp.setLineStyle((hlp.getLineStyle() + 1) % Const.MAX_LINESTYLE);
             }
         });
         this.findViewById(R.id.saveBtn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                hlp.saveToFile(PATH + "demo.vg");
+                hlp.saveToFile(PATH + VGFILE);
             }
         });
         this.findViewById(R.id.loadBtn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                hlp.loadFromFile(PATH + "demo.vg");
+                hlp.loadFromFile(PATH + VGFILE);
             }
         });
         this.findViewById(R.id.addSVGFile).setOnClickListener(new OnClickListener() {
@@ -169,9 +171,10 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
     protected void lockShape(int sid) {
         final MgShape sp = hlp.cmdView().shapes().cloneShape(sid);
         if (sp != null) {
-            sp.shape().setFlag(MgShapeBit.kMgNoAction, true);       // Not show context buttons
-            sp.shape().setFlag(MgShapeBit.kMgShapeLocked, true);    // Can't select or change it
-            sp.shape().offset(new Vector2d(50, 50), -1);            // Offset for test
+            // Not show context buttons | Can't select or change it | Offset for test
+            sp.shape().setFlag(MgShapeBit.kMgNoAction, true);
+            sp.shape().setFlag(MgShapeBit.kMgShapeLocked, true);
+            sp.shape().offset(new Vector2d(50, 50), -1);
             sp.getParent().updateShape(sp);
             hlp.cmdView().regenAll(true);
         }

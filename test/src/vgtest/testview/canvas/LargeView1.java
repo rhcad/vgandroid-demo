@@ -31,7 +31,7 @@ public class LargeView1 extends ScrollView {
     }
 
     private void createContentView(Context context) {
-        int flags = ((Activity) context).getIntent().getExtras().getInt("flags");
+        final int flags = ((Activity) context).getIntent().getExtras().getInt("flags");
         View view = null;
 
         if ((flags & 0x10000) != 0) { // in scroll view

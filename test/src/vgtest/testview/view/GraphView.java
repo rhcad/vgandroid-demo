@@ -38,23 +38,23 @@ public class GraphView extends View {
         this.setOnTouchListener(new OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    mCoreView.onGesture(mViewAdapter, GiGestureType.kGiGesturePan,
-                            GiGestureState.kGiGestureBegan, event.getX(), event.getY());
+                    onGesture(GiGestureType.kGiGesturePan, GiGestureState.kGiGestureBegan, event);
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    mCoreView.onGesture(mViewAdapter, GiGestureType.kGiGesturePan,
-                            GiGestureState.kGiGestureEnded, event.getX(), event.getY());
+                    onGesture(GiGestureType.kGiGesturePan, GiGestureState.kGiGestureEnded, event);
                     showTime();
                 } else if (mDynDrawView != null
                         && event.getEventTime() > mDynDrawView.getEndPaintTime()) {
-                    mCoreView.onGesture(mViewAdapter, GiGestureType.kGiGesturePan,
-                            GiGestureState.kGiGestureMoved, event.getX(), event.getY());
+                    onGesture(GiGestureType.kGiGesturePan, GiGestureState.kGiGestureMoved, event);
                     showTime();
                 } else if (mDynDrawView == null && event.getEventTime() > mEndPaintTime) {
-                    mCoreView.onGesture(mViewAdapter, GiGestureType.kGiGesturePan,
-                            GiGestureState.kGiGestureMoved, event.getX(), event.getY());
+                    onGesture(GiGestureType.kGiGesturePan, GiGestureState.kGiGestureMoved, event);
                     showTime();
                 }
                 return true;
+            }
+
+            private void onGesture(GiGestureType type, GiGestureState state, MotionEvent event) {
+                mCoreView.onGesture(mViewAdapter, type, state, event.getX(), event.getY());
             }
         });
     }
@@ -130,9 +130,10 @@ public class GraphView extends View {
         @Override
         public void regenAll(boolean changed) {
             synchronized (mCoreView) {
-                if (changed)
+                if (changed) {
                     mCoreView.submitBackDoc(mViewAdapter, changed);
-                mCoreView.submitDynamicShapes(mViewAdapter);
+                    mCoreView.submitDynamicShapes(mViewAdapter);
+                }
             }
             doDraw();
             if (mDynDrawView != null) {
@@ -148,8 +149,9 @@ public class GraphView extends View {
         @Override
         public void redraw(boolean changed) {
             synchronized (mCoreView) {
-                if (changed)
+                if (changed) {
                     mCoreView.submitDynamicShapes(mViewAdapter);
+                }
             }
             if (mDynDrawView != null) {
                 mDynDrawView.doDraw();

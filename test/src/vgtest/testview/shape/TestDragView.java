@@ -44,24 +44,21 @@ public class TestDragView extends ViewSinShape {
     }
 
     @Override
-    public boolean onDragEvent(DragEvent event) {
+    public boolean onDragEvent(DragEvent e) {
         boolean ret = true;
 
-        switch (event.getAction()) {
+        switch (e.getAction()) {
         case DragEvent.ACTION_DRAG_ENTERED:
             mHelper.setCommand(DrawSinShape.NAME);
-            ret = mHelper.getGraphView().onTouchDrag(MotionEvent.ACTION_DOWN, event.getX(),
-                    event.getY());
+            ret = mHelper.getGraphView().onTouchDrag(MotionEvent.ACTION_DOWN, e.getX(), e.getY());
             break;
 
         case DragEvent.ACTION_DRAG_LOCATION:
-            ret = mHelper.getGraphView().onTouchDrag(MotionEvent.ACTION_MOVE,
-                    event.getX(), event.getY());
+            ret = mHelper.getGraphView().onTouchDrag(MotionEvent.ACTION_MOVE, e.getX(), e.getY());
             break;
 
         case DragEvent.ACTION_DROP:
-            ret = mHelper.getGraphView().onTouchDrag(MotionEvent.ACTION_UP,
-                    event.getX(), event.getY());
+            ret = mHelper.getGraphView().onTouchDrag(MotionEvent.ACTION_UP, e.getX(), e.getY());
             break;
 
         default:

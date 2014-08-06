@@ -14,6 +14,7 @@ import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff.Mode;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -21,6 +22,7 @@ import android.view.View;
 
 //! 基于SurfaceView的静态绘图测试视图类
 public class SurfaceView1 extends SurfaceView {
+    private static final String TAG = "vgtest";
     protected CanvasAdapter mCanvas;
     protected int mCreateFlags;
     private long mDrawnTime;
@@ -50,7 +52,8 @@ public class SurfaceView1 extends SurfaceView {
 
     @Override
     public void setBackgroundColor(int color) {
-        mCanvas.setBackgroundColor(color); // 视图仍然是透明色
+        // 视图仍然是透明色
+        mCanvas.setBackgroundColor(color);
     }
 
     protected void showTime(long ms) {
@@ -98,9 +101,11 @@ public class SurfaceView1 extends SurfaceView {
         }
 
         public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+            Log.d(TAG, "surfaceChanged");
         }
 
         public void surfaceDestroyed(SurfaceHolder holder) {
+            Log.d(TAG, "surfaceDestroyed");
         }
     }
 }

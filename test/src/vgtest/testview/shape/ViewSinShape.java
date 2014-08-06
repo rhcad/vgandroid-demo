@@ -96,15 +96,17 @@ public class ViewSinShape extends LinearLayout {
 
         @Override
         public MgBaseShape createShape(MgMotion sender, int type) {
-            if (type == SinShape.TYPE)
+            if (type == SinShape.TYPE) {
                 return new SinShape();
+            }
             return super.createShape(sender, type);
         }
 
         @Override
         public MgCommand createCommand(MgMotion sender, String name) {
-            if (name.equals(DrawSinShape.NAME))
+            if (name.equals(DrawSinShape.NAME)) {
                 return new DrawSinShape();
+            }
             return super.createCommand(sender, name);
         }
 
@@ -164,8 +166,9 @@ public class ViewSinShape extends LinearLayout {
 
         @Override
         public boolean click(MgMotion sender) {
-            super.click(sender); // 看能否点中已有图形
-            if (sender.getView().isCommand(NAME)) { // 没退出命令
+            // 看能否点中已有图形，如果没退出命令就加一个图形
+            super.click(sender);
+            if (sender.getView().isCommand(NAME)) {
                 dynshape().shape().setHandlePoint(0, snapPoint(sender), 0);
                 addShape(sender);
             }
@@ -188,7 +191,7 @@ public class ViewSinShape extends LinearLayout {
         public boolean touchEnded(MgMotion sender) {
             dynshape().shape().setHandlePoint(0, snapPoint(sender), 0);
             addShape(sender);
-            return sender.getView().toSelectCommand(); // 画完一个就退出
+            return sender.getView().toSelectCommand();
         }
     }
 
@@ -204,8 +207,9 @@ public class ViewSinShape extends LinearLayout {
         int mTestValue = 0;
 
         public SinShape() {
-            if (mShapeCache == null)
+            if (mShapeCache == null) {
                 mShapeCache = new ArrayList<SinShape>();
+            }
             mShapeCache.add(this);
 
             for (int i = 0; i < 40; i++) {

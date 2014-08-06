@@ -52,14 +52,14 @@ public class DragObserverActivity extends ExampleActivitySF {
 
             for (int i = 0; i < lens.length; i++) {
                 lens[i] = sp.getHandlePoint(i).distanceTo(sp.getHandlePoint(i + 1));
-                if (i > 0 && !equals(lens[i - 1], lens[i], tol)) {
+                if (i > 0 && !floatEquals(lens[i - 1], lens[i], tol)) {
                     return false;
                 }
             }
-            return equals(lens[lens.length - 1], lens[0], tol);
+            return floatEquals(lens[lens.length - 1], lens[0], tol);
         }
 
-        private boolean equals(float a, float b, float tol) {
+        private boolean floatEquals(float a, float b, float tol) {
             return Math.abs(a - b) < tol;
         }
     }

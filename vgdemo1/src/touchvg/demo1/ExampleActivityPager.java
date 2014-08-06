@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 // Testing Activity using SFGraphView in PagerView
 public class ExampleActivityPager extends ExampleActivity1 {
+    private static final String VGEXT = ".vg";
     private ViewPager viewPager;
     private ArrayList<IGraphView> views = new ArrayList<IGraphView>();
 
@@ -24,8 +25,9 @@ public class ExampleActivityPager extends ExampleActivity1 {
         setContentView(R.layout.activity_pager1);
 
         views.add(createPage(0));
-        for (int i = 1; i < 4; i++)
+        for (int i = 1; i < 4; i++) {
             views.add(null);
+        }
         hlp.setGraphView(views.get(0));
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -51,12 +53,12 @@ public class ExampleActivityPager extends ExampleActivity1 {
     }
 
     protected String getFileName(int position) {
-        return position + ".vg";
+        return position + VGEXT;
     }
 
     @Override
     protected String getFileName() {
-        return (viewPager != null ? viewPager.getCurrentItem() : 0) + ".vg";
+        return (viewPager != null ? viewPager.getCurrentItem() : 0) + VGEXT;
     }
 
     @Override
@@ -98,8 +100,9 @@ public class ExampleActivityPager extends ExampleActivity1 {
         public void destroyItem(ViewGroup container, int position, Object object) {
             final IViewHelper tmphlp = ViewFactory.createHelper(views.get(position));
 
-            if (tmphlp.getView() == hlp.getView())
+            if (tmphlp.getView() == hlp.getView()) {
                 hlp.setGraphView(null);
+            }
             tmphlp.saveToFile(PATH + getFileName(position));
             container.removeView((ViewGroup) tmphlp.getParent());
             tmphlp.close();

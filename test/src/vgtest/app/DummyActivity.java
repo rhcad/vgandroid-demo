@@ -12,11 +12,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 
 public class DummyActivity extends Activity {
+    private static final String TAG = "vgtest";
     private static final String FILEPATH = "mnt/sdcard/TouchVG";
     private IViewHelper mHelper;
 
@@ -25,7 +27,7 @@ public class DummyActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         Bundle bundle = getIntent().getExtras();
-        int flags = bundle.getInt("flags");
+        final int flags = bundle.getInt("flags");
         View view = null;
 
         try {
@@ -41,7 +43,7 @@ public class DummyActivity extends Activity {
                 view = (View) c1.newInstance(new Object[] { this });
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.d(TAG, "onCreate fail", e);
         }
 
         if ((flags & TestFlags.MODEL_SURFACE) != 0) {

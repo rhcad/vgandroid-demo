@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 public class TestInsertSVG extends LinearLayout {
     private IViewHelper mHelper = ViewFactory.createHelper();
     private static final String PATH = "mnt/sdcard/TouchVG/";
+    private static final String VGFILE = PATH + "testsvg.vg";
 
     public TestInsertSVG(Context context) {
         super(context);
@@ -86,8 +87,8 @@ public class TestInsertSVG extends LinearLayout {
         layout.addView(saveBtn, param);
         saveBtn.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                mHelper.exportPNG(PATH + "testsvg.png");
-                mHelper.saveToFile(PATH + "testsvg.vg");
+                mHelper.exportPNG(VGFILE);
+                mHelper.saveToFile(VGFILE);
             }
         });
 
@@ -96,7 +97,7 @@ public class TestInsertSVG extends LinearLayout {
         layout.addView(loadBtn, param);
         loadBtn.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                mHelper.loadFromFile(PATH + "testsvg.vg");
+                mHelper.loadFromFile(VGFILE);
             }
         });
     }

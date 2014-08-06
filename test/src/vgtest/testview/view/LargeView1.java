@@ -17,7 +17,7 @@ public class LargeView1 extends ScrollView {
     }
 
     private void createContentView(Context context) {
-        final GraphView1 view = new GraphView1(context);
+        final StdGraphView1 view = new StdGraphView1(context);
         final FrameLayout layout = new FrameLayout(context);
         layout.addView(view, new LayoutParams(LayoutParams.MATCH_PARENT, 2048));
         this.addView(layout);

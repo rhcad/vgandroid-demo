@@ -19,13 +19,12 @@ public class TestMagnifier1 extends LinearLayout {
         super(context);
         this.setOrientation(HORIZONTAL);
 
-        int flags = ((Activity) context).getIntent().getExtras().getInt("flags");
-
+        final int flags = ((Activity) context).getIntent().getExtras().getInt("flags");
         final LayoutParams param = new LayoutParams(LayoutParams.MATCH_PARENT,
                 LayoutParams.MATCH_PARENT);
         param.weight = 1;
 
-        final GraphView1 view = new GraphView1(context);
+        final StdGraphView1 view = new StdGraphView1(context);
         addView(view, param);
 
         final StdGraphView magView = new StdGraphView(context, view);

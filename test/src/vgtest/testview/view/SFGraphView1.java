@@ -2,6 +2,7 @@
 
 package vgtest.testview.view;
 
+import rhcad.touchvg.Const;
 import rhcad.touchvg.IGraphView;
 import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.ViewFactory;
@@ -34,7 +35,7 @@ public class SFGraphView1 extends SFGraphView {
 
         if (savedInstanceState == null
                 && (flags & (TestFlags.RECORD | TestFlags.RAND_SHAPES)) != 0) {
-            setOnFirstRegenListener(new OnFirstRegenListener() {
+            setOnFirstRegenListener(new IGraphView.OnFirstRegenListener() {
 
                 public void onFirstRegen(IGraphView view) {
                     if ((flags & TestFlags.RAND_SHAPES) != 0) {
@@ -47,15 +48,19 @@ public class SFGraphView1 extends SFGraphView {
             });
         }
         if ((flags & TestFlags.SWITCH_CMD) != 0) {
-            setOnGestureListener(new OnDrawGestureListener() {
+            setOnGestureListener(new IGraphView.OnDrawGestureListener() {
 
                 public boolean onPreGesture(int gestureType, float x, float y) {
-                    helper.switchCommand();
-                    Toast.makeText(getContext(), helper.getCommand(), Toast.LENGTH_SHORT).show();
-                    return true;
+                    if (gestureType == Const.GESTURE_DBLTAP) {
+                        helper.switchCommand();
+                        Toast.makeText(getContext(), helper.getCommand(), Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                    return false;
                 }
 
                 public void onPostGesture(int gestureType, float x, float y) {
+                    // Do nothing
                 }
             });
         }
@@ -85,7 +90,7 @@ public class SFGraphView1 extends SFGraphView {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
 
-        int flags = ((Activity) getContext()).getIntent().getExtras().getInt("flags");
+        final int flags = ((Activity) getContext()).getIntent().getExtras().getInt("flags");
         if ((flags & TestFlags.HAS_BACKDRAWABLE) != 0) {
             ViewGroup layout = (ViewGroup) getParent();
             this.setBackgroundDrawable(layout.getBackground());

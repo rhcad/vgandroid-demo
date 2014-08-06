@@ -2,6 +2,7 @@
 
 package vgtest.testview.view;
 
+import rhcad.touchvg.Const;
 import rhcad.touchvg.IGraphView;
 import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.ViewFactory;
@@ -14,18 +15,18 @@ import android.util.Log;
 import android.widget.Toast;
 import democmds.core.DemoCmdsGate;
 
-public class GraphView1 extends StdGraphView {
+public class StdGraphView1 extends StdGraphView {
     protected static final String PATH = "mnt/sdcard/TouchVG/";
 
     static {
         System.loadLibrary("democmds");
     }
 
-    public GraphView1(Context context) {
+    public StdGraphView1(Context context) {
         this(context, null);
     }
 
-    public GraphView1(Context context, Bundle savedInstanceState) {
+    public StdGraphView1(Context context, Bundle savedInstanceState) {
         super(context, savedInstanceState);
 
         final int flags = ((Activity) context).getIntent().getExtras().getInt("flags");
@@ -36,6 +37,7 @@ public class GraphView1 extends StdGraphView {
         }
         if (savedInstanceState == null && (flags & TestFlags.RECORD) != 0) {
             setOnFirstRegenListener(new IGraphView.OnFirstRegenListener() {
+
                 public void onFirstRegen(IGraphView view) {
                     helper.startRecord(PATH + "record");
                 }
@@ -43,13 +45,18 @@ public class GraphView1 extends StdGraphView {
         }
         if ((flags & TestFlags.SWITCH_CMD) != 0) {
             setOnGestureListener(new IGraphView.OnDrawGestureListener() {
+
                 public boolean onPreGesture(int gestureType, float x, float y) {
-                    helper.switchCommand();
-                    Toast.makeText(getContext(), helper.getCommand(), Toast.LENGTH_SHORT).show();
-                    return true;
+                    if (gestureType == Const.GESTURE_DBLTAP) {
+                        helper.switchCommand();
+                        Toast.makeText(getContext(), helper.getCommand(), Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                    return false;
                 }
 
                 public void onPostGesture(int gestureType, float x, float y) {
+                    // Do nothing
                 }
             });
         }
