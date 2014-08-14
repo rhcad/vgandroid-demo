@@ -203,7 +203,7 @@ public class ViewSinShape extends LinearLayout {
 
     private class SinShape extends MgBaseShape {
         public static final int TYPE = 100;
-        private MgSplines mCurve = new MgSplines();
+        private MgSplines mCurve = MgSplines.create();
         int mTestValue = 0;
 
         public SinShape() {
