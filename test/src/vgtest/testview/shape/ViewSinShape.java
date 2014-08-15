@@ -360,10 +360,5 @@ public class ViewSinShape extends LinearLayout {
         public boolean setHandlePoint(int index, Point2d pt, float tol) {
             return super.setHandlePoint(index, pt, tol);
         }
-
-        @Override
-        public void setOwner(MgShape owner) {
-            super.setOwner(owner);
-        }
     }
 }
