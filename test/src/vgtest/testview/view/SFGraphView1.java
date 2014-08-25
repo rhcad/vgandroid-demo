@@ -99,6 +99,13 @@ public class SFGraphView1 extends SFGraphView {
         default:
             break;
         }
+        if ((mFlags & TestFlags.CMD_PARAMETER) != 0) {
+            helper.setStrokeWidth(3);
+            helper.setCommand("triangle", "{'points':[-10,20, 30,-20, -30,-20]}");
+            helper.setStrokeWidth(2);
+            helper.setLineStyle(Const.DASH_LINE);
+            helper.setCommand("line", "{'points':[-10,20,0,-20, 30,-20,-20,0, -30,-20,10,0]}");
+        }
     }
 
     @Override

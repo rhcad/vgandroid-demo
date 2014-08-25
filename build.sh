@@ -19,10 +19,17 @@ fi
 cd ../vgandroid; sh build.sh $1 $2; cd ../vgandroid-demo
 cd ../DemoCmds/android; sh build.sh $1 $2; cd ../../vgandroid-demo
 
-mkdir -p output/armeabi
+mkdir -p output/touchvg_libs/armeabi
 cp -vR ../vgandroid/TouchVG/bin/touchvg.jar             output
+cp -vR ../vgandroid/TouchVG/libs/armeabi                output/touchvg_libs
+cp -vR ../vgandroid/TouchVG/libs/x86                    output/touchvg_libs
+
+mkdir -p output/democmds_libs/armeabi
+cp -vR ../DemoCmds/android/DemoCmds/bin/democmds.jar    output
+cp -vR ../DemoCmds/android/DemoCmds/libs/armeabi        output/democmds_libs
+cp -vR ../DemoCmds/android/DemoCmds/libs/x86            output/democmds_libs
+
 cp -vR ../vgandroid/TouchVG/libs/armeabi                output
 cp -vR ../vgandroid/TouchVG/libs/x86                    output
-cp -vR ../DemoCmds/android/DemoCmds/bin/democmds.jar    output
 cp -vR ../DemoCmds/android/DemoCmds/libs/armeabi        output
 cp -vR ../DemoCmds/android/DemoCmds/libs/x86            output

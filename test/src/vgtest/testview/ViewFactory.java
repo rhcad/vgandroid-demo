@@ -19,9 +19,8 @@ public class ViewFactory {
         private String title;
 
         public DummyItem(String id, int flags, String title) {
-            boolean hittest = (flags & TestFlags.HITTEST_CMD) != 0;
             this.id = id;
-            this.flags = hittest ? flags | TestFlags.RAND_SHAPES : flags;
+            this.flags = flags;
             this.title = title;
         }
 
@@ -96,6 +95,8 @@ public class ViewFactory {
                 "SFGraphView select transparent");
         addItem(SFGRAPHVIEW1, TestFlags.HAS_BACKDRAWABLE | TestFlags.RAND_SPLINES,
                 "SFGraphView draw transparent");
+        addItem(SFGRAPHVIEW1, TestFlags.CMD_PARAMETER | TestFlags.SELECT_CMD,
+                "Command with parameter");
     }
 
     static void testStdViews() {
