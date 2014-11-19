@@ -171,6 +171,7 @@ public class ViewFactory {
         addItem(CANVASVIEW1, TestCanvas.kRect, "testRect");
         addItem(CANVASVIEW1, TestCanvas.kLine, "testLine");
         addItem(CANVASVIEW1, TestCanvas.kTextAt, "testTextAt");
+        addItem(CANVASVIEW1, TestCanvas.kRotateText, "testRotateText");
         addItem(CANVASVIEW1, TestCanvas.kEllipse, "testEllipse");
         addItem(CANVASVIEW1, TestCanvas.kQuadBezier, "testQuadBezier");
         addItem(CANVASVIEW1, TestCanvas.kCubicBezier, "testCubicBezier");
@@ -196,6 +197,9 @@ public class ViewFactory {
         addItem(LARGEVIEW3, TestCanvas.kTextAt | TestFlags.LARGE_VIEW, "testTextAt in large view");
         addItem(LARGEVIEW3, TestCanvas.kTextAt | TestFlags.LARGE_SURFACEVIEW,
                 "testTextAt in large surface view");
+        addItem(LARGEVIEW3, TestCanvas.kRotateText | TestFlags.LARGE_VIEW, "testRotateText in large view");
+        addItem(LARGEVIEW3, TestCanvas.kRotateText | TestFlags.LARGE_SURFACEVIEW,
+                "testRotateText in large surface view");
         addItem(LARGEVIEW3, TestCanvas.kCubicBezier | TestFlags.LARGE_VIEW,
                 "testCubicBezier in large view");
         addItem(LARGEVIEW3, TestCanvas.kCubicBezier | TestFlags.LARGE_SURFACEVIEW,
