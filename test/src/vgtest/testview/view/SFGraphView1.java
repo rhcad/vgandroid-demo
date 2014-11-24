@@ -93,7 +93,7 @@ public class SFGraphView1 extends SFGraphView {
             break;
         case TestFlags.HITTEST_CMD:
             int n = DemoCmdsGate.registerCmds(helper.cmdViewHandle());
-            helper.setCommand("hittest");
+            helper.setCommand("dim_example"); // or "hittest"
             Log.d("Test", "DemoCmdsGate.registerCmds = " + n + ", " + helper.getCommand());
             break;
         default:
