@@ -6,6 +6,7 @@ import rhcad.touchvg.Const;
 import rhcad.touchvg.IGraphView;
 import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.ViewFactory;
+import rhcad.touchvg.core.MgMotion;
 import rhcad.touchvg.view.SFGraphView;
 import vgtest.testview.TestFlags;
 import android.app.Activity;
@@ -39,6 +40,25 @@ public class SFGraphView1 extends SFGraphView {
         }
         registerGestureListener(helper);
         startTestCommand(helper);
+
+        setOnShapeDblClickedListener(new IGraphView.OnShapeDblClickedListener() {
+            public boolean onShapeDblClicked(IGraphView view, int type, int sid, int tag) {
+                Log.d(TAG, "SF onShapeDblClicked " + type);
+                return false;
+            }
+        });
+        setOnShapeClickedListener(new IGraphView.OnShapeClickedListener() {
+            public boolean onShapeClicked(IGraphView view, int type, int sid, int tag, float x, float y) {
+                Log.d(TAG, "SF onShapeClicked " + type);
+                return false;
+            }
+        });
+        setOnContextActionListener(new IGraphView.OnContextActionListener() {
+            public boolean onContextAction(IGraphView view, MgMotion sender, int action) {
+                Log.d(TAG, "SF onContextAction " + action);
+                return false;
+            }
+        });
     }
 
     private void registerFirstRegen(final IViewHelper helper) {
