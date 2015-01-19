@@ -1,6 +1,6 @@
 # TouchVG Demo for Android
 
-This is a unit test and example project for [TouchVG](https://github.com/touchvg/vgandroid), which is a lightweight 2D vector drawing framework for Android.
+This is a unit test and example project for [vgandroid](https://github.com/rhcad/vgandroid), which is a lightweight 2D vector drawing framework for Android.
 
 ![arch](http://touchvg.github.io/images/arch.svg)
 
@@ -8,7 +8,7 @@ This is a unit test and example project for [TouchVG](https://github.com/touchvg
 
 - Don't want to build libtouchvg.so and libdemocmds.so ?
 
-  - Download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip).
+  - Download the [prebuilt libraries](https://github.com/rhcad/vgandroid/archive/prebuilt.zip).
   - Extract `touchvg_libs` in the zip package to `vgandroid/TouchVG/libs`.
   - Extract `democmds_libs` in the zip package to `DemoCmds/android/DemoCmds/libs`.
   - Import all projects (touchvg, democmds, vgdemo1 and VGTest) in eclipse. Android SDK version in the projects may need to modify according to your installation.
@@ -54,27 +54,25 @@ This is a unit test and example project for [TouchVG](https://github.com/touchvg
 
 - You can create library project containing your own shapes and commands. So the TouchVG and TouchVGCore libraries does not require changes.
 
-  - Checkout and enter [DemoCmds](https://github.com/touchvg/DemoCmds) directory, then type `python newproj.py YourCmds`:
+  - Checkout and enter [DemoCmds](https://github.com/rhcad/DemoCmds) directory, then type `python newproj.py YourCmds`:
 
      ```shell
-     git clone https://github.com/touchvg/DemoCmds.git
+     git clone https://github.com/rhcad/DemoCmds.git
      cd DemoCmds
      python newproj.py MyCmds
      ```
 
-- You can customize the drawing behavior via implement your CmdObserver class (see the example in [DemoCmds](https://github.com/touchvg/DemoCmds) ).
+- You can customize the drawing behavior via implement your CmdObserver class (see the example in [DemoCmds](https://github.com/rhcad/DemoCmds) ).
 
 ## License
 
 This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the following open source projects:
 
-- [TouchVG](https://github.com/touchvg/vgandroid) (LGPL): Vector drawing framework for Android.
-- [TouchVGCore](https://github.com/touchvg/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
-- [DemoCmds](https://github.com/touchvg/DemoCmds): A template and example project containing customized shape and command classes.
+- [vgandroid](https://github.com/rhcad/vgandroid) (LGPL): Vector drawing framework for Android.
+- [vgcore](https://github.com/rhcad/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
+- [DemoCmds](https://github.com/rhcad/DemoCmds): A template and example project containing customized shape and command classes.
 
 ## How to Contribute
 
 Contributors and sponsors are welcome. You may translate, commit issues or pull requests on this Github site.
 To contribute, please follow the branching model outlined here: [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/).
-
-Welcome to the Chinese QQ group `192093613` to discuss and share.
