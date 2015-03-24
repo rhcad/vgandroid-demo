@@ -66,10 +66,10 @@ This is a unit test and example project for [vgandroid](https://github.com/rhcad
 
 ## License
 
-This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the following open source projects:
+This is an open source [BSD licensed](LICENSE) project. It uses the following open source projects:
 
-- [vgandroid](https://github.com/rhcad/vgandroid) (LGPL): Vector drawing framework for Android.
-- [vgcore](https://github.com/rhcad/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
+- [vgandroid](https://github.com/rhcad/vgandroid) (BSD): Vector drawing framework for Android.
+- [vgcore](https://github.com/rhcad/vgcore) (BSD): Cross-platform vector drawing libraries using C++.
 - [DemoCmds](https://github.com/rhcad/DemoCmds): A template and example project containing customized shape and command classes.
 
 ## How to Contribute

@@ -1,4 +1,4 @@
-// Copyright (c) 2014, https://github.com/rhcad/touchvg
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
 
 package touchvg.demo1;
 

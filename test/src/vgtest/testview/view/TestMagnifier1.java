@@ -1,6 +1,6 @@
 //! \file TestMagnifier1.java
 //! \brief 测试放大镜的布局视图类
-// Copyright (c) 2012-2013, https://github.com/rhcad/touchvg
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
 
 package vgtest.testview.view;
 

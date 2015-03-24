@@ -1,4 +1,6 @@
-﻿package vgtest.testview.shape;
+﻿// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
+
+package vgtest.testview.shape;
 
 import android.content.ClipData;
 import android.content.Context;

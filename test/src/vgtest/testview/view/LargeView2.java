@@ -1,6 +1,6 @@
 //! \file LargeView2.java
 //! \brief 测试长幅绘图(双视图布局)的滚动视图类
-// Copyright (c) 2012-2013, https://github.com/rhcad/touchvg
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
 
 package vgtest.testview.view;
 

@@ -1,6 +1,6 @@
 //! \file GraphView2.java
 //! \brief 基于普通View类的动画绘图测试视图类
-// Copyright (c) 2012-2013, https://github.com/rhcad/touchvg
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
 
 package vgtest.testview.canvas;
 
