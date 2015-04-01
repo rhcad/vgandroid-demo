@@ -326,7 +326,7 @@ public class ViewSinShape extends LinearLayout {
 
         @Override
         public boolean draw(int mode, GiGraphics gs, GiContext ctx, int segment) {
-            boolean ret = mCurve.draw(mode, gs, ctx, segment);
+            boolean ret = MgShape.drawShape(null, mCurve, mode, gs, ctx, segment);
             return super.draw(mode, gs, ctx, segment) || ret;
         }
 
