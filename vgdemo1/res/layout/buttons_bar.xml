@@ -4,6 +4,12 @@
     android:orientation="horizontal" >
 
     <Button
+        android:id="@+id/lockGesture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lockGesture" />
+
+    <Button
         android:id="@+id/selectBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,11 +74,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/redoBtn" />
-
-    <Button
-        android:id="@+id/lockGesture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lockGesture" />
 
 </LinearLayout>
