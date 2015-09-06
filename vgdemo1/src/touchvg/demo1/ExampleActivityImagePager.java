@@ -89,12 +89,10 @@ public class ExampleActivityImagePager extends ExampleActivity1 {
                 tmphlp.exportPNG(PATH + getFileName(position));
             }
             tmphlp.close(new OnViewDetachedListener() {
-                @Override
                 public void onGraphViewDetached() {
                     // Called in onDetachedFromWindow, so add the image view in the same parent view later.
                     // You may reload and show image content immediately in another parent view.
                     mViews[position].post(new Runnable() {
-                        @Override
                         public void run() {
                             addImageView(position);
                         }

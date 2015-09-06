@@ -91,7 +91,6 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
 
     private void initCommandButton(int id, final String name) {
         this.findViewById(id).setOnClickListener(new OnClickListener() {
-            @Override
             public void onClick(View v) {
                 hlp.setCommand(name);
             }
@@ -100,7 +99,6 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
 
     private void initColorButton(int id, final int argb) {
         this.findViewById(id).setOnClickListener(new OnClickListener() {
-            @Override
             public void onClick(View v) {
                 hlp.setLineColor(argb);
             }
@@ -116,19 +114,16 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
         initRedoSaveButton();
 
         this.findViewById(R.id.lineStyleBtn).setOnClickListener(new OnClickListener() {
-            @Override
             public void onClick(View v) {
                 hlp.setLineStyle((hlp.getLineStyle() + 1) % Const.MAX_LINESTYLE);
             }
         });
         this.findViewById(R.id.addSVGFile).setOnClickListener(new OnClickListener() {
-            @Override
             public void onClick(View v) {
                 lockShape(hlp.insertSVGFromResource(R.raw.text));
             }
         });
         this.findViewById(R.id.lockGesture).setOnClickListener(new OnClickListener() {
-            @Override
             public void onClick(View v) {
                 switchGestureEnabled();
             }
@@ -137,25 +132,21 @@ public class ExampleActivity1 extends Activity implements IGraphView.OnFirstRege
 
     private void initRedoSaveButton() {
         this.findViewById(R.id.saveBtn).setOnClickListener(new OnClickListener() {
-            @Override
             public void onClick(View v) {
                 hlp.saveToFile(PATH + VGFILE);
             }
         });
         this.findViewById(R.id.loadBtn).setOnClickListener(new OnClickListener() {
-            @Override
             public void onClick(View v) {
                 hlp.loadFromFile(PATH + VGFILE);
             }
         });
         this.findViewById(R.id.undoBtn).setOnClickListener(new OnClickListener() {
-            @Override
             public void onClick(View v) {
                 hlp.undo();
             }
         });
         this.findViewById(R.id.redoBtn).setOnClickListener(new OnClickListener() {
-            @Override
             public void onClick(View v) {
                 hlp.redo();
             }
