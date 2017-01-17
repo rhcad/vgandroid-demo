@@ -1,5 +1,5 @@
-﻿//! \file SurfaceView1.java
-//! \brief 基于SurfaceView的静态绘图测试视图类
+//! \file SurfaceView1.java
+//! \brief Drawing view class based on cached bitmap and SurfaceView.
 // Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
 
 package vgtest.testview.canvas;
@@ -21,7 +21,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
-//! 基于SurfaceView的静态绘图测试视图类
+//! Drawing view class based on cached bitmap and SurfaceView.
 public class SurfaceView1 extends SurfaceView {
     private static final String TAG = "vgtest";
     protected CanvasAdapter mCanvas;
@@ -53,7 +53,6 @@ public class SurfaceView1 extends SurfaceView {
 
     @Override
     public void setBackgroundColor(int color) {
-        // 视图仍然是透明色
         mCanvas.setBackgroundColor(color);
     }
 

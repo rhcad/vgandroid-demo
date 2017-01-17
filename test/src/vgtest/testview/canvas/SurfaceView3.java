@@ -1,5 +1,5 @@
-﻿//! \file SurfaceView3.java
-//! \brief 基于SurfaceView在线程中不断绘图的测试视图类
+//! \file SurfaceView3.java
+//! \brief Drawing view class with drawing thread based on SurfaceView
 // Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
 
 package vgtest.testview.canvas;
@@ -20,7 +20,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
-//! 基于SurfaceView在线程中不断绘图的测试视图类
+//! Drawing view class with drawing thread based on SurfaceView
 public class SurfaceView3 extends SurfaceView {
     private static final String TAG = "vgtest";
     protected CanvasAdapter mCanvas;
@@ -58,7 +58,6 @@ public class SurfaceView3 extends SurfaceView {
 
     @Override
     public void setBackgroundColor(int color) {
-        // 视图仍然是透明色
         mCanvas.setBackgroundColor(color);
     }
 
@@ -108,7 +107,8 @@ public class SurfaceView3 extends SurfaceView {
     class SurfaceCallback implements SurfaceHolder.Callback {
         public void surfaceCreated(SurfaceHolder holder) {
             new Thread(new DrawThread()).start();
-            // 在视图刚创建就启动线程会因lockCanvas失败而延迟显示，在surfaceCreated中启动更快
+            // Start drawing thread will delay due to the failure of lockCanvas().
+            // The drawing thread should be started in surfaceCreated().
         }
 
         public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {

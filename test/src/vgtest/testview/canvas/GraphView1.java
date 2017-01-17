@@ -1,5 +1,5 @@
-﻿//! \file GraphView1.java
-//! \brief 基于普通View类的绘图测试视图类
+//! \file GraphView1.java
+//! \brief Drawing view class based on standard view class
 // Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
 
 package vgtest.testview.canvas;
@@ -16,7 +16,7 @@ import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
 
-//! 基于普通View类的绘图测试视图类，在onDraw()中使用Canvas绘图
+//! Drawing view class based on standard view class which draw in onDraw()
 public class GraphView1 extends View {
     protected CanvasAdapter mCanvas;
     protected int mCreateFlags;
@@ -49,7 +49,7 @@ public class GraphView1 extends View {
 
     @Override
     public void setBackgroundColor(int color) {
-        mCanvas.setBackgroundColor(color); // 视图仍然是透明色
+        mCanvas.setBackgroundColor(color);
     }
 
     protected void showTime(long ms) {

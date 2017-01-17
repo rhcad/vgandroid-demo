@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
 
 package vgtest.app;
 
@@ -52,7 +52,7 @@ public class DummyActivity extends Activity {
             // LinearLayout layout = new LinearLayout(this);
             // layout.setOrientation(LinearLayout.VERTICAL);
             final FrameLayout layout = new FrameLayout(this);
-            layout.setBackgroundResource(R.drawable.vg_translucent_bg); // 测试图片平铺
+            layout.setBackgroundResource(R.drawable.vg_translucent_bg); // Test picture tile
             this.setContentView(layout);
 
             if (view != null) {

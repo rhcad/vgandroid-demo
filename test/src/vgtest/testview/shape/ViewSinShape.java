@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
 
 package vgtest.testview.shape;
 
@@ -33,7 +33,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-//! 测试自定义图形类的测试视图类
+//! View class to test customized shapes
 public class ViewSinShape extends LinearLayout {
     protected IViewHelper mHelper = ViewFactory.createHelper();
     private MyCmdObserver mObserver = new MyCmdObserver();
@@ -166,7 +166,7 @@ public class ViewSinShape extends LinearLayout {
 
         @Override
         public boolean click(MgMotion sender) {
-            // 看能否点中已有图形，如果没退出命令就加一个图形
+            // Test shape hitting. Add a shape if the current command is active after hitting.
             super.click(sender);
             if (sender.getView().isCommand(NAME)) {
                 dynshape().shape().setHandlePoint(0, snapPoint(sender), 0);

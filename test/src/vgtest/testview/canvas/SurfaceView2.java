@@ -1,5 +1,5 @@
-﻿//! \file SurfaceView2.java
-//! \brief 基于SurfaceView带绘图线程的测试视图类
+//! \file SurfaceView2.java
+//! \brief Drawing view class with drawing thread based on SurfaceView
 // Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
 
 package vgtest.testview.canvas;
@@ -21,7 +21,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
-//! 基于SurfaceView带绘图线程的测试视图类
+//! Drawing view class with drawing thread based on SurfaceView
 public class SurfaceView2 extends SurfaceView {
     private static final String TAG = "vgtest";
     protected CanvasAdapter mCanvas;
@@ -59,7 +59,7 @@ public class SurfaceView2 extends SurfaceView {
 
     @Override
     public void setBackgroundColor(int color) {
-        // 视图仍然是透明色
+        // View is transparent
         mCanvas.setBackgroundColor(color);
     }
 

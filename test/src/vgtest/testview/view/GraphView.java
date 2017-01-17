@@ -1,5 +1,5 @@
-﻿//! \file GraphView.java
-//! \brief Android绘图视图类
+//! \file GraphView.java
+//! \brief Drawing view class
 // Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid-demo, BSD license
 
 package vgtest.testview.view;
@@ -16,7 +16,7 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 
-//! Android绘图视图类
+//! Drawing view class
 public class GraphView extends View {
     private CanvasAdapter mCanvasAdapter;
     private ViewAdapter mViewAdapter;
